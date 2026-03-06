@@ -1,0 +1,121 @@
+food_item,category,item_text,item_id
+Thali,mild,Thali mild lunch,0
+Curd Rice,mild,Curd Rice mild snack,1
+Paneer Butter Masala,spicy,Paneer Butter Masala spicy snack,2
+Manchurian,spicy,Manchurian spicy snack,3
+Masala Dosa,mild,Masala Dosa mild lunch,4
+Tandoori Chicken,spicy,Tandoori Chicken spicy lunch,5
+Butter Naan,mild,Butter Naan mild dinner,6
+Hyderabadi Biryani,spicy,Hyderabadi Biryani spicy snack,7
+Pizza,spicy,Pizza spicy breakfast,8
+Pizza,spicy,Pizza spicy dinner,9
+Kathi Roll,spicy,Kathi Roll spicy snack,10
+Dhokla,mild,Dhokla mild breakfast,11
+Chicken 65,spicy,Chicken 65 spicy dinner,12
+Rajma Chawal,mild,Rajma Chawal mild dinner,13
+Hyderabadi Biryani,spicy,Hyderabadi Biryani spicy breakfast,14
+Butter Naan,mild,Butter Naan mild snack,15
+Hyderabadi Biryani,spicy,Hyderabadi Biryani spicy dinner,16
+Veg Pulao,mild,Veg Pulao mild lunch,17
+Pav Bhaji,spicy,Pav Bhaji spicy snack,18
+Poha,mild,Poha mild lunch,19
+Chicken 65,spicy,Chicken 65 spicy snack,20
+Idli,mild,Idli mild breakfast,21
+Poha,mild,Poha mild snack,22
+Palak Paneer,mild,Palak Paneer mild lunch,23
+Spring Roll,spicy,Spring Roll spicy dinner,24
+Thali,mild,Thali mild snack,25
+Chicken 65,spicy,Chicken 65 spicy breakfast,26
+Veg Pulao,mild,Veg Pulao mild snack,27
+Paneer Butter Masala,spicy,Paneer Butter Masala spicy breakfast,28
+Dal Tadka,mild,Dal Tadka mild breakfast,29
+Fried Rice,spicy,Fried Rice spicy snack,30
+Mutton Curry,spicy,Mutton Curry spicy snack,31
+Fish Fry,spicy,Fish Fry spicy lunch,32
+Spring Roll,spicy,Spring Roll spicy lunch,33
+Poha,mild,Poha mild breakfast,34
+Fried Rice,spicy,Fried Rice spicy dinner,35
+Manchurian,spicy,Manchurian spicy breakfast,36
+Curd Rice,mild,Curd Rice mild breakfast,37
+Spring Roll,spicy,Spring Roll spicy breakfast,38
+Curd Rice,mild,Curd Rice mild lunch,39
+Dal Tadka,mild,Dal Tadka mild snack,40
+Khichdi,mild,Khichdi mild breakfast,41
+Pav Bhaji,spicy,Pav Bhaji spicy dinner,42
+Vada Pav,spicy,Vada Pav spicy breakfast,43
+Butter Naan,mild,Butter Naan mild lunch,44
+Paneer Butter Masala,spicy,Paneer Butter Masala spicy dinner,45
+Palak Paneer,mild,Palak Paneer mild breakfast,46
+Chole Bhature,spicy,Chole Bhature spicy lunch,47
+Rajma Chawal,mild,Rajma Chawal mild breakfast,48
+Fish Fry,spicy,Fish Fry spicy dinner,49
+Veg Pulao,mild,Veg Pulao mild breakfast,50
+Fried Rice,spicy,Fried Rice spicy lunch,51
+Aloo Paratha,mild,Aloo Paratha mild snack,52
+Butter Naan,mild,Butter Naan mild breakfast,53
+Tandoori Chicken,spicy,Tandoori Chicken spicy breakfast,54
+Fried Rice,spicy,Fried Rice spicy breakfast,55
+Aloo Paratha,mild,Aloo Paratha mild breakfast,56
+Mutton Curry,spicy,Mutton Curry spicy lunch,57
+Samosa,spicy,Samosa spicy dinner,58
+Mutton Curry,spicy,Mutton Curry spicy breakfast,59
+Pav Bhaji,spicy,Pav Bhaji spicy lunch,60
+Tandoori Chicken,spicy,Tandoori Chicken spicy snack,61
+Rajma Chawal,mild,Rajma Chawal mild snack,62
+Manchurian,spicy,Manchurian spicy dinner,63
+Palak Paneer,mild,Palak Paneer mild snack,64
+Khichdi,mild,Khichdi mild dinner,65
+Dhokla,mild,Dhokla mild snack,66
+Masala Dosa,mild,Masala Dosa mild snack,67
+Idli,mild,Idli mild dinner,68
+Chole Bhature,spicy,Chole Bhature spicy dinner,69
+Pizza,spicy,Pizza spicy lunch,70
+Tandoori Chicken,spicy,Tandoori Chicken spicy dinner,71
+Khichdi,mild,Khichdi mild snack,72
+Dhokla,mild,Dhokla mild dinner,73
+Aloo Paratha,mild,Aloo Paratha mild dinner,74
+Samosa,spicy,Samosa spicy breakfast,75
+Vada Pav,spicy,Vada Pav spicy lunch,76
+Kathi Roll,spicy,Kathi Roll spicy breakfast,77
+Poha,mild,Poha mild dinner,78
+Masala Dosa,mild,Masala Dosa mild dinner,79
+Burger,spicy,Burger spicy snack,80
+Hyderabadi Biryani,spicy,Hyderabadi Biryani spicy lunch,81
+Burger,spicy,Burger spicy dinner,82
+Veg Pulao,mild,Veg Pulao mild dinner,83
+Burger,spicy,Burger spicy lunch,84
+Aloo Paratha,mild,Aloo Paratha mild lunch,85
+Rajma Chawal,mild,Rajma Chawal mild lunch,86
+Khichdi,mild,Khichdi mild lunch,87
+Chicken 65,spicy,Chicken 65 spicy lunch,88
+Upma,mild,Upma mild dinner,89
+Upma,mild,Upma mild lunch,90
+Dhokla,mild,Dhokla mild lunch,91
+Vada Pav,spicy,Vada Pav spicy snack,92
+Dal Tadka,mild,Dal Tadka mild dinner,93
+Chole Bhature,spicy,Chole Bhature spicy snack,94
+Mutton Curry,spicy,Mutton Curry spicy dinner,95
+Burger,spicy,Burger spicy breakfast,96
+Kathi Roll,spicy,Kathi Roll spicy lunch,97
+Paneer Butter Masala,spicy,Paneer Butter Masala spicy lunch,98
+Idli,mild,Idli mild snack,99
+Vada Pav,spicy,Vada Pav spicy dinner,100
+Curd Rice,mild,Curd Rice mild dinner,101
+Masala Dosa,mild,Masala Dosa mild breakfast,102
+Upma,mild,Upma mild snack,103
+Pizza,spicy,Pizza spicy snack,104
+Fish Fry,spicy,Fish Fry spicy breakfast,105
+Thali,mild,Thali mild dinner,106
+Kathi Roll,spicy,Kathi Roll spicy dinner,107
+Dal Tadka,mild,Dal Tadka mild lunch,108
+Idli,mild,Idli mild lunch,109
+Upma,mild,Upma mild breakfast,110
+Palak Paneer,mild,Palak Paneer mild dinner,111
+Spring Roll,spicy,Spring Roll spicy snack,112
+Fish Fry,spicy,Fish Fry spicy snack,113
+Thali,mild,Thali mild breakfast,114
+Chole Bhature,spicy,Chole Bhature spicy breakfast,115
+Samosa,spicy,Samosa spicy lunch,116
+Samosa,spicy,Samosa spicy snack,117
+Manchurian,spicy,Manchurian spicy lunch,118
+Pav Bhaji,spicy,Pav Bhaji spicy breakfast,119

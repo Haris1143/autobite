@@ -1,0 +1,1001 @@
+product_id,food_item,category,price
+1,Milkshake,sweet,18.28
+2,Nachos,sweet,18.94
+3,Paneer Tikka Pizza,vegan,9.02
+4,Margherita Pizza,dessert,14.38
+5,Waffles,spicy,14.07
+6,Dumplings,sweet,11.58
+7,Veg Sandwich,mild,5.91
+8,Onion Rings,vegan,24.94
+9,Dumplings,dessert,20.84
+10,Hummus with Pita,vegan,7.85
+11,Vanilla Cake,dessert,7.74
+12,French Fries,sweet,24.7
+13,Hummus with Pita,sweet,5.84
+14,Fried Chicken,fast food,10.58
+15,Mango Juice,beverage,24.06
+16,Smoothie Bowl,mild,5.75
+17,Veg Pulao,spicy,24.7
+18,Hummus with Pita,beverage,14.86
+19,Margherita Pizza,vegan,13.44
+20,Avocado Toast,sweet,24.54
+21,Cereal Bowl,beverage,10.77
+22,Masala Chai,savory,12.25
+23,Shawarma Roll,vegan,17.84
+24,Chicken Soup,dessert,14.6
+25,Tacos,vegan,21.34
+26,Grilled Fish,fast food,13.01
+27,Chocolate Cake,spicy,14.24
+28,Green Tea,spicy,9.59
+29,Milkshake,savory,4.66
+30,Mac and Cheese,spicy,7.68
+31,Cheesecake,vegan,15.06
+32,Veg Pulao,fast food,17.86
+33,Greek Salad,sweet,7.37
+34,Herbal Tea,savory,17.47
+35,Granola Yogurt,savory,19.1
+36,Masala Chai,fast food,12.82
+37,Avocado Toast,mild,16.61
+38,Burrito,fast food,3.14
+39,Herbal Tea,fast food,11.09
+40,Mac and Cheese,spicy,7.99
+41,Steak,vegan,19.61
+42,Lemonade,savory,6.53
+43,Donut,fast food,15.13
+44,Cereal Bowl,vegan,21.38
+45,Egg Sandwich,dessert,15.98
+46,Pasta Alfredo,vegan,18.73
+47,Hummus with Pita,sweet,17.86
+48,Falafel Wrap,savory,5.1
+49,Milkshake,dessert,9.23
+50,Sushi Roll,dessert,11.0
+51,Pancakes,sweet,22.93
+52,Onion Rings,mild,3.82
+53,Club Sandwich,fast food,18.55
+54,Quesadilla,dessert,17.41
+55,Double Beef Burger,spicy,11.71
+56,Falafel Wrap,beverage,2.78
+57,Falafel Wrap,beverage,3.68
+58,Brownie,beverage,19.64
+59,Avocado Toast,mild,2.69
+60,Iced Coffee,spicy,5.95
+61,Veggie Burger,beverage,10.21
+62,Cheesecake,dessert,22.77
+63,Donut,sweet,16.15
+64,Iced Coffee,spicy,5.76
+65,Green Tea,vegan,5.5
+66,Paneer Tikka Pizza,dessert,20.92
+67,Paneer Tikka Pizza,fast food,3.28
+68,Smoothie Bowl,sweet,13.52
+69,Latte,savory,12.05
+70,Milkshake,fast food,16.79
+71,Smoothie Bowl,dessert,23.41
+72,Pepperoni Pizza,spicy,21.7
+73,Burrito,sweet,9.36
+74,Veg Sandwich,mild,9.28
+75,Cereal Bowl,fast food,15.68
+76,Chow Mein,dessert,10.5
+77,Steak,beverage,3.17
+78,Garlic Bread,fast food,23.87
+79,Iced Coffee,mild,8.06
+80,Iced Coffee,dessert,9.63
+81,Fried Rice,savory,21.39
+82,Tomato Soup,mild,15.65
+83,Pancakes,savory,19.71
+84,Hot Chocolate,vegan,22.68
+85,Hot Chocolate,spicy,14.91
+86,Avocado Toast,savory,6.67
+87,Ice Cream Sundae,savory,3.36
+88,Falafel Wrap,sweet,7.17
+89,Shawarma Roll,fast food,18.51
+90,Grilled Chicken Burger,spicy,20.87
+91,Fried Chicken,fast food,19.26
+92,Pepperoni Pizza,savory,10.61
+93,Herbal Tea,mild,3.08
+94,Paneer Tikka Pizza,vegan,13.43
+95,Spring Rolls,sweet,13.11
+96,Burrito,spicy,3.46
+97,Pasta Arrabiata,vegan,14.96
+98,Green Tea,beverage,12.49
+99,Pasta Arrabiata,fast food,15.73
+100,Orange Juice,fast food,8.38
+101,Veg Pulao,dessert,23.75
+102,Falafel Wrap,beverage,17.68
+103,Spring Rolls,fast food,17.7
+104,Donut,dessert,17.41
+105,Quesadilla,beverage,15.22
+106,Sparkling Water,beverage,20.28
+107,Veg Pulao,savory,20.74
+108,Pancakes,dessert,3.31
+109,Cereal Bowl,savory,17.38
+110,Chicken Soup,beverage,12.22
+111,Pasta Arrabiata,fast food,2.16
+112,Hot Chocolate,dessert,3.94
+113,Cappuccino,beverage,21.04
+114,Herbal Tea,dessert,15.98
+115,Grilled Fish,mild,12.02
+116,Ramen Bowl,vegan,24.16
+117,Chocolate Cake,sweet,19.69
+118,Roast Lamb,dessert,23.79
+119,Chicken Biryani,fast food,3.18
+120,Onion Rings,dessert,12.44
+121,Chow Mein,sweet,18.4
+122,Grilled Fish,vegan,16.71
+123,Vanilla Cake,dessert,15.68
+124,Herbal Tea,fast food,22.51
+125,Fried Rice,fast food,4.62
+126,Latte,fast food,5.45
+127,Latte,vegan,20.08
+128,French Fries,savory,5.05
+129,Mushroom Soup,sweet,20.35
+130,Hot Chocolate,mild,22.86
+131,Ice Cream Sundae,sweet,16.59
+132,Cappuccino,sweet,2.49
+133,Waffles,savory,14.04
+134,Onion Rings,dessert,16.33
+135,Pepperoni Pizza,beverage,10.24
+136,Granola Yogurt,spicy,21.39
+137,Greek Salad,fast food,2.58
+138,Cheesecake,mild,23.82
+139,Falafel Wrap,sweet,2.55
+140,Ice Cream Sundae,beverage,3.77
+141,Pancakes,savory,23.47
+142,Orange Juice,sweet,22.56
+143,Roast Lamb,vegan,19.33
+144,Granola Yogurt,fast food,12.29
+145,Roast Lamb,savory,12.17
+146,French Fries,fast food,23.67
+147,Paneer Tikka Pizza,vegan,7.94
+148,Quesadilla,fast food,14.1
+149,Orange Juice,mild,24.6
+150,French Toast,mild,4.78
+151,Onion Rings,vegan,6.16
+152,Smoothie Bowl,dessert,11.7
+153,Latte,fast food,2.15
+154,Pepperoni Pizza,fast food,4.31
+155,Waffles,savory,17.09
+156,Tomato Soup,beverage,11.93
+157,Falafel Wrap,sweet,20.6
+158,Iced Coffee,beverage,24.49
+159,Pancakes,dessert,16.54
+160,Fried Chicken,sweet,24.59
+161,Chicken Biryani,vegan,2.85
+162,Grilled Fish,vegan,18.42
+163,Chow Mein,vegan,4.66
+164,Nachos,sweet,14.75
+165,Cereal Bowl,fast food,6.59
+166,Chicken Biryani,sweet,4.07
+167,Onion Rings,vegan,11.63
+168,Caesar Salad,fast food,4.32
+169,Nachos,vegan,2.35
+170,Onion Rings,fast food,16.48
+171,Sushi Roll,savory,4.18
+172,Avocado Toast,sweet,14.49
+173,Burrito,sweet,10.33
+174,Margherita Pizza,vegan,24.7
+175,Pepperoni Pizza,mild,18.61
+176,Nachos,sweet,19.13
+177,Pepperoni Pizza,savory,24.75
+178,Caesar Salad,beverage,8.44
+179,Ice Cream Sundae,beverage,12.53
+180,Club Sandwich,sweet,7.38
+181,Tomato Soup,dessert,17.0
+182,Quesadilla,beverage,23.1
+183,Onion Rings,mild,11.46
+184,Granola Yogurt,mild,20.68
+185,Iced Coffee,beverage,3.94
+186,Chocolate Cake,beverage,9.17
+187,Sparkling Water,fast food,7.41
+188,Iced Coffee,dessert,23.81
+189,Grilled Chicken Burger,sweet,24.47
+190,French Fries,dessert,2.39
+191,Avocado Toast,mild,11.61
+192,Tomato Soup,spicy,18.64
+193,Veg Pulao,vegan,21.98
+194,Tomato Soup,fast food,24.22
+195,Ramen Bowl,beverage,17.71
+196,Avocado Toast,dessert,8.62
+197,Ice Cream Sundae,spicy,12.74
+198,Chow Mein,vegan,12.54
+199,French Toast,dessert,5.88
+200,Ice Cream Sundae,mild,24.08
+201,Cappuccino,savory,6.55
+202,Nachos,fast food,16.86
+203,Hot Chocolate,fast food,12.65
+204,Caesar Salad,spicy,17.91
+205,Sparkling Water,fast food,5.57
+206,Club Sandwich,sweet,3.26
+207,Hot Chocolate,savory,3.25
+208,Lemonade,vegan,23.19
+209,Green Tea,savory,19.68
+210,Waffles,fast food,23.79
+211,Egg Sandwich,mild,6.43
+212,Club Sandwich,savory,4.04
+213,Brownie,spicy,11.36
+214,Fruit Salad,beverage,7.56
+215,Pancakes,vegan,24.69
+216,Donut,mild,15.21
+217,Margherita Pizza,dessert,4.76
+218,Masala Chai,spicy,18.31
+219,Lemonade,beverage,20.79
+220,Masala Chai,mild,4.3
+221,Mac and Cheese,vegan,20.01
+222,Dumplings,dessert,7.35
+223,Paneer Tikka Pizza,spicy,18.74
+224,Fruit Salad,vegan,10.78
+225,Brownie,fast food,12.29
+226,Ramen Bowl,sweet,24.59
+227,Orange Juice,beverage,2.17
+228,Veg Pulao,vegan,12.77
+229,Mango Juice,sweet,16.37
+230,Smoothie Bowl,fast food,5.73
+231,Cheesecake,beverage,22.58
+232,Nachos,dessert,16.96
+233,French Toast,beverage,7.95
+234,Chocolate Cake,sweet,5.76
+235,Garlic Bread,spicy,4.33
+236,Egg Sandwich,vegan,19.0
+237,Iced Coffee,mild,23.44
+238,Grilled Fish,beverage,5.52
+239,Pancakes,fast food,24.51
+240,Greek Salad,mild,14.27
+241,Double Beef Burger,sweet,11.57
+242,Veg Sandwich,mild,22.45
+243,French Toast,dessert,16.17
+244,Quesadilla,sweet,4.45
+245,Caesar Salad,sweet,20.14
+246,Tacos,fast food,3.63
+247,Chicken Soup,fast food,9.58
+248,Chicken Soup,dessert,4.97
+249,Pepperoni Pizza,fast food,8.15
+250,Tacos,fast food,4.67
+251,Garlic Bread,fast food,11.93
+252,Hot Chocolate,dessert,19.99
+253,Waffles,savory,2.77
+254,Garlic Bread,savory,3.77
+255,Pancakes,mild,9.3
+256,Pasta Arrabiata,savory,7.07
+257,Grilled Chicken Burger,mild,14.91
+258,Burrito,savory,23.82
+259,Brownie,mild,24.16
+260,Mushroom Soup,dessert,12.73
+261,Vanilla Cake,beverage,18.12
+262,Smoothie Bowl,mild,23.17
+263,Latte,mild,5.17
+264,Double Beef Burger,savory,4.37
+265,Mac and Cheese,fast food,21.29
+266,Mango Juice,fast food,21.37
+267,Hot Chocolate,spicy,8.83
+268,Veggie Burger,fast food,9.85
+269,Double Beef Burger,sweet,22.16
+270,Double Beef Burger,dessert,13.85
+271,Ice Cream Sundae,fast food,3.15
+272,Waffles,sweet,18.83
+273,Veg Sandwich,fast food,4.28
+274,Waffles,dessert,6.48
+275,Dumplings,sweet,9.4
+276,Greek Salad,mild,17.43
+277,Chocolate Cake,beverage,4.36
+278,Caesar Salad,beverage,23.53
+279,French Toast,spicy,12.6
+280,Orange Juice,mild,13.28
+281,Roast Lamb,beverage,9.88
+282,Cheese Burger,spicy,18.69
+283,Chocolate Cake,spicy,19.49
+284,Mac and Cheese,savory,19.55
+285,Fried Chicken,fast food,19.76
+286,Energy Drink,sweet,23.04
+287,Paneer Tikka Pizza,spicy,15.52
+288,Avocado Toast,sweet,17.32
+289,Cappuccino,vegan,5.87
+290,Energy Drink,vegan,22.67
+291,Orange Juice,sweet,23.65
+292,Fried Rice,sweet,5.33
+293,Pasta Alfredo,sweet,2.99
+294,Onion Rings,savory,23.07
+295,Hummus with Pita,spicy,3.13
+296,Fried Rice,spicy,11.73
+297,Herbal Tea,vegan,12.31
+298,Masala Chai,savory,21.96
+299,Pancakes,savory,17.47
+300,Waffles,vegan,12.55
+301,Spring Rolls,dessert,16.73
+302,Roast Lamb,vegan,16.27
+303,Fried Rice,beverage,17.28
+304,Lemonade,spicy,12.12
+305,Green Tea,vegan,3.26
+306,Brownie,dessert,20.88
+307,Green Tea,sweet,20.38
+308,Hummus with Pita,savory,4.1
+309,French Fries,spicy,21.63
+310,Latte,mild,2.12
+311,Pepperoni Pizza,mild,20.81
+312,Cereal Bowl,fast food,4.72
+313,Nachos,vegan,23.16
+314,Egg Sandwich,mild,13.9
+315,Sparkling Water,mild,17.2
+316,Mango Juice,savory,18.84
+317,Milkshake,fast food,10.61
+318,Fried Chicken,vegan,12.96
+319,Veg Pulao,mild,4.02
+320,Sushi Roll,mild,6.39
+321,Roast Lamb,fast food,18.37
+322,Cheese Burger,savory,7.93
+323,Waffles,vegan,15.32
+324,Shawarma Roll,savory,13.67
+325,Nachos,fast food,8.91
+326,French Toast,fast food,22.19
+327,Mushroom Soup,savory,10.35
+328,Chicken Soup,sweet,24.5
+329,Tacos,vegan,10.28
+330,Green Tea,savory,8.38
+331,Club Sandwich,fast food,22.76
+332,Latte,savory,16.39
+333,Double Beef Burger,beverage,2.47
+334,Iced Coffee,vegan,11.98
+335,Spring Rolls,vegan,20.44
+336,Ice Cream Sundae,beverage,21.9
+337,Waffles,fast food,6.2
+338,Mango Juice,mild,13.12
+339,Donut,mild,7.06
+340,Caesar Salad,vegan,24.55
+341,Cheese Burger,savory,8.0
+342,French Fries,dessert,12.42
+343,Hot Chocolate,sweet,8.75
+344,Cheese Burger,sweet,2.17
+345,Mango Juice,mild,7.62
+346,Caesar Salad,savory,11.08
+347,French Fries,dessert,16.32
+348,Chocolate Cake,vegan,24.95
+349,Fruit Salad,savory,3.66
+350,Burrito,mild,12.1
+351,Egg Sandwich,vegan,16.33
+352,Granola Yogurt,beverage,5.61
+353,Grilled Chicken Burger,spicy,20.19
+354,Veg Sandwich,savory,16.56
+355,Latte,dessert,21.14
+356,Smoothie Bowl,beverage,18.56
+357,Steak,savory,5.79
+358,Caesar Salad,spicy,2.65
+359,Pancakes,sweet,16.83
+360,Granola Yogurt,dessert,9.46
+361,Chicken Biryani,savory,24.23
+362,Steak,dessert,14.32
+363,Fried Chicken,beverage,21.39
+364,Mac and Cheese,spicy,19.51
+365,Steak,savory,21.99
+366,Pasta Alfredo,mild,7.32
+367,Mango Juice,mild,19.08
+368,Ice Cream Sundae,mild,24.52
+369,Garlic Bread,vegan,12.9
+370,Roast Lamb,dessert,6.56
+371,Granola Yogurt,vegan,3.92
+372,Energy Drink,fast food,13.45
+373,Egg Sandwich,fast food,7.11
+374,Hummus with Pita,beverage,11.56
+375,Grilled Fish,sweet,8.53
+376,Pasta Alfredo,fast food,12.85
+377,Roast Lamb,vegan,14.01
+378,Milkshake,beverage,18.8
+379,Latte,mild,14.5
+380,Herbal Tea,fast food,19.44
+381,Cereal Bowl,spicy,5.71
+382,Pepperoni Pizza,savory,7.36
+383,Spring Rolls,vegan,4.11
+384,Garlic Bread,dessert,5.27
+385,Club Sandwich,spicy,12.72
+386,Tacos,vegan,2.1
+387,Iced Coffee,beverage,11.15
+388,Tacos,sweet,6.43
+389,Energy Drink,savory,23.8
+390,Nachos,vegan,10.67
+391,Pancakes,spicy,7.88
+392,Spring Rolls,mild,21.59
+393,Ramen Bowl,dessert,3.75
+394,Hummus with Pita,dessert,13.92
+395,Grilled Fish,mild,10.66
+396,BBQ Chicken Pizza,spicy,12.59
+397,Pasta Arrabiata,mild,17.41
+398,Steak,sweet,12.97
+399,BBQ Chicken Pizza,savory,11.8
+400,Egg Sandwich,savory,21.84
+401,Tacos,mild,17.53
+402,Fruit Salad,spicy,10.8
+403,Cereal Bowl,dessert,24.36
+404,Waffles,beverage,21.15
+405,Smoothie Bowl,vegan,4.68
+406,Pancakes,savory,14.7
+407,Quesadilla,beverage,16.99
+408,Fruit Salad,vegan,2.51
+409,Tomato Soup,beverage,13.6
+410,Burrito,savory,14.1
+411,Energy Drink,beverage,19.68
+412,Fried Chicken,vegan,19.83
+413,Latte,mild,13.27
+414,Veggie Burger,vegan,12.07
+415,Fried Rice,spicy,8.7
+416,Latte,vegan,20.46
+417,Orange Juice,mild,7.67
+418,Falafel Wrap,dessert,15.09
+419,Roast Lamb,mild,4.62
+420,Pepperoni Pizza,spicy,18.35
+421,Brownie,spicy,11.95
+422,Spring Rolls,fast food,19.36
+423,Latte,savory,20.98
+424,Chicken Soup,beverage,9.16
+425,Hummus with Pita,sweet,17.88
+426,Pancakes,spicy,6.12
+427,Greek Salad,dessert,22.93
+428,Sparkling Water,dessert,20.54
+429,Mushroom Soup,mild,18.56
+430,Masala Chai,savory,20.74
+431,Pepperoni Pizza,savory,21.27
+432,Lemonade,fast food,8.32
+433,Tacos,beverage,5.16
+434,Falafel Wrap,fast food,21.11
+435,Burrito,mild,17.38
+436,Cereal Bowl,mild,11.44
+437,Double Beef Burger,vegan,17.77
+438,Burrito,mild,22.08
+439,Steak,fast food,13.43
+440,Granola Yogurt,fast food,8.71
+441,Fried Rice,savory,12.13
+442,Herbal Tea,sweet,10.53
+443,Mac and Cheese,dessert,19.21
+444,Quesadilla,vegan,11.28
+445,Hot Chocolate,mild,6.03
+446,Pancakes,savory,4.1
+447,Chocolate Cake,vegan,10.14
+448,Milkshake,mild,13.11
+449,Iced Coffee,beverage,13.68
+450,Brownie,savory,6.59
+451,Pasta Alfredo,mild,24.23
+452,Fried Chicken,dessert,11.11
+453,Granola Yogurt,fast food,19.94
+454,Quesadilla,beverage,23.7
+455,Tacos,vegan,11.21
+456,Iced Coffee,savory,11.06
+457,Hummus with Pita,savory,13.61
+458,Caesar Salad,mild,16.99
+459,Steak,beverage,16.25
+460,Orange Juice,sweet,9.68
+461,Latte,sweet,24.06
+462,Shawarma Roll,fast food,23.47
+463,Cheesecake,dessert,17.9
+464,Hot Chocolate,sweet,5.08
+465,Dumplings,beverage,24.21
+466,Nachos,dessert,15.3
+467,Cappuccino,fast food,20.07
+468,Granola Yogurt,fast food,3.8
+469,Brownie,fast food,8.1
+470,Fried Rice,savory,2.81
+471,Pasta Alfredo,mild,19.34
+472,Fried Rice,mild,13.67
+473,Chicken Soup,dessert,19.86
+474,Ramen Bowl,dessert,12.11
+475,Masala Chai,vegan,15.17
+476,Fried Chicken,fast food,3.83
+477,Veg Pulao,beverage,15.79
+478,Club Sandwich,dessert,20.75
+479,Club Sandwich,savory,3.39
+480,Iced Coffee,sweet,4.0
+481,Cappuccino,vegan,7.15
+482,Chow Mein,fast food,16.14
+483,Green Tea,sweet,12.45
+484,Avocado Toast,spicy,14.86
+485,Fried Rice,sweet,2.48
+486,Orange Juice,mild,4.86
+487,Cheesecake,spicy,2.34
+488,Ice Cream Sundae,sweet,23.58
+489,Cappuccino,dessert,6.54
+490,Veg Sandwich,fast food,6.91
+491,French Fries,fast food,12.92
+492,Nachos,fast food,19.19
+493,Falafel Wrap,fast food,12.11
+494,Cappuccino,savory,22.37
+495,French Fries,spicy,16.93
+496,Cereal Bowl,vegan,18.85
+497,Grilled Chicken Burger,dessert,21.98
+498,Chow Mein,beverage,14.83
+499,Avocado Toast,savory,10.6
+500,Falafel Wrap,sweet,5.77
+501,Pancakes,dessert,11.75
+502,Grilled Chicken Burger,mild,21.14
+503,Mac and Cheese,savory,14.91
+504,Caesar Salad,dessert,3.68
+505,Paneer Tikka Pizza,fast food,21.31
+506,Margherita Pizza,savory,22.31
+507,Double Beef Burger,sweet,4.16
+508,Nachos,vegan,10.06
+509,Greek Salad,spicy,3.93
+510,Vanilla Cake,vegan,5.22
+511,Cheese Burger,beverage,2.75
+512,Granola Yogurt,savory,7.49
+513,Green Tea,mild,24.15
+514,Chicken Biryani,spicy,11.31
+515,Falafel Wrap,beverage,23.46
+516,Lemonade,sweet,3.05
+517,Dumplings,spicy,18.35
+518,Grilled Fish,vegan,23.8
+519,Mushroom Soup,sweet,10.49
+520,Roast Lamb,vegan,11.17
+521,Burrito,vegan,13.51
+522,Lemonade,fast food,2.79
+523,Orange Juice,savory,12.77
+524,French Fries,mild,2.33
+525,Veg Sandwich,mild,10.44
+526,Grilled Chicken Burger,spicy,17.52
+527,Iced Coffee,savory,12.76
+528,Milkshake,savory,20.49
+529,Chicken Soup,spicy,16.61
+530,Ice Cream Sundae,savory,5.41
+531,Chow Mein,mild,10.61
+532,Ramen Bowl,beverage,18.26
+533,Pasta Arrabiata,spicy,19.79
+534,Ramen Bowl,beverage,19.48
+535,Double Beef Burger,mild,2.69
+536,Mac and Cheese,sweet,19.32
+537,Sushi Roll,fast food,13.72
+538,Cheesecake,beverage,14.47
+539,Fried Rice,sweet,23.08
+540,Pepperoni Pizza,beverage,24.42
+541,Brownie,dessert,8.9
+542,Milkshake,dessert,11.33
+543,Nachos,fast food,16.02
+544,Dumplings,savory,20.27
+545,Fried Rice,sweet,11.45
+546,Falafel Wrap,savory,4.24
+547,Cheesecake,beverage,20.66
+548,Iced Coffee,dessert,2.55
+549,Fried Chicken,fast food,12.61
+550,Caesar Salad,spicy,3.33
+551,Hot Chocolate,spicy,18.32
+552,BBQ Chicken Pizza,mild,3.01
+553,Roast Lamb,beverage,15.41
+554,Orange Juice,beverage,24.52
+555,Falafel Wrap,dessert,11.25
+556,Mango Juice,mild,12.24
+557,Hot Chocolate,vegan,6.38
+558,Energy Drink,sweet,12.47
+559,Greek Salad,mild,14.84
+560,Garlic Bread,dessert,18.29
+561,Brownie,mild,6.56
+562,Veg Pulao,mild,21.01
+563,Latte,fast food,5.33
+564,Steak,dessert,5.52
+565,Chocolate Cake,mild,16.09
+566,French Toast,savory,15.44
+567,Grilled Chicken Burger,fast food,19.15
+568,Grilled Fish,mild,23.1
+569,Chicken Soup,dessert,9.25
+570,French Toast,beverage,8.47
+571,Double Beef Burger,sweet,12.74
+572,Greek Salad,beverage,5.19
+573,Shawarma Roll,dessert,17.44
+574,Roast Lamb,sweet,16.07
+575,Quesadilla,mild,16.34
+576,Steak,dessert,12.43
+577,Club Sandwich,spicy,23.1
+578,Avocado Toast,beverage,20.63
+579,Sushi Roll,sweet,14.73
+580,Masala Chai,vegan,20.84
+581,Chocolate Cake,spicy,12.91
+582,Spring Rolls,spicy,17.17
+583,Energy Drink,savory,7.26
+584,Pepperoni Pizza,sweet,7.14
+585,Hummus with Pita,vegan,18.45
+586,Iced Coffee,savory,21.55
+587,Cereal Bowl,sweet,5.92
+588,Pepperoni Pizza,beverage,12.72
+589,Granola Yogurt,mild,7.68
+590,Steak,vegan,22.52
+591,Granola Yogurt,savory,7.43
+592,Fried Chicken,mild,4.13
+593,Shawarma Roll,spicy,22.7
+594,Pepperoni Pizza,dessert,14.33
+595,Fruit Salad,spicy,4.18
+596,Caesar Salad,savory,8.4
+597,Grilled Chicken Burger,vegan,22.76
+598,Waffles,beverage,9.93
+599,Double Beef Burger,dessert,11.22
+600,Ice Cream Sundae,vegan,22.86
+601,Steak,vegan,21.46
+602,Greek Salad,beverage,12.7
+603,Mango Juice,dessert,2.5
+604,Veg Pulao,spicy,23.89
+605,Chicken Soup,vegan,22.21
+606,Granola Yogurt,spicy,19.0
+607,BBQ Chicken Pizza,spicy,13.9
+608,Pasta Arrabiata,fast food,9.19
+609,Vanilla Cake,sweet,7.91
+610,BBQ Chicken Pizza,mild,11.03
+611,Tacos,spicy,8.49
+612,Grilled Fish,spicy,14.16
+613,Lemonade,sweet,8.37
+614,Green Tea,beverage,3.53
+615,Onion Rings,dessert,19.32
+616,Vanilla Cake,spicy,12.62
+617,Burrito,beverage,11.97
+618,Greek Salad,fast food,17.64
+619,Mushroom Soup,vegan,11.96
+620,Garlic Bread,beverage,8.2
+621,Nachos,spicy,9.33
+622,Chicken Soup,savory,24.17
+623,Dumplings,beverage,20.48
+624,Garlic Bread,savory,21.54
+625,Tacos,sweet,12.68
+626,Falafel Wrap,beverage,16.11
+627,Garlic Bread,spicy,22.87
+628,Chicken Biryani,beverage,20.03
+629,Nachos,savory,6.94
+630,French Fries,mild,16.69
+631,Hot Chocolate,beverage,14.98
+632,Hot Chocolate,spicy,11.42
+633,Cheesecake,savory,11.85
+634,Chocolate Cake,vegan,21.3
+635,Spring Rolls,sweet,13.2
+636,Burrito,mild,11.03
+637,Hummus with Pita,beverage,12.94
+638,Orange Juice,savory,21.32
+639,Fried Chicken,mild,3.42
+640,Lemonade,dessert,19.16
+641,Pasta Alfredo,savory,5.42
+642,Caesar Salad,fast food,16.61
+643,Chicken Biryani,mild,8.22
+644,Greek Salad,savory,21.65
+645,Nachos,fast food,24.68
+646,Fried Rice,mild,5.02
+647,Lemonade,sweet,16.18
+648,Sushi Roll,beverage,5.46
+649,Tomato Soup,beverage,11.36
+650,Shawarma Roll,fast food,18.37
+651,Steak,vegan,10.25
+652,French Toast,savory,20.48
+653,Pasta Arrabiata,fast food,23.35
+654,Veg Sandwich,beverage,7.84
+655,Onion Rings,fast food,9.51
+656,Chow Mein,spicy,10.9
+657,Cheese Burger,beverage,6.24
+658,French Fries,mild,21.87
+659,Milkshake,vegan,11.13
+660,Fried Rice,sweet,9.58
+661,Garlic Bread,beverage,12.88
+662,Iced Coffee,spicy,12.08
+663,Caesar Salad,dessert,5.07
+664,Pepperoni Pizza,sweet,8.92
+665,Grilled Fish,sweet,19.99
+666,Pasta Arrabiata,sweet,5.55
+667,Lemonade,beverage,17.44
+668,Green Tea,sweet,4.11
+669,Steak,beverage,23.78
+670,Donut,dessert,17.75
+671,Fried Chicken,spicy,11.13
+672,Cappuccino,mild,6.6
+673,French Toast,dessert,19.32
+674,Chicken Biryani,spicy,6.23
+675,Pepperoni Pizza,dessert,12.31
+676,French Toast,vegan,4.56
+677,Double Beef Burger,spicy,6.5
+678,Green Tea,mild,12.4
+679,Sparkling Water,beverage,18.73
+680,Mushroom Soup,savory,10.78
+681,Sushi Roll,vegan,15.79
+682,Iced Coffee,fast food,18.45
+683,Pasta Arrabiata,vegan,15.51
+684,Onion Rings,mild,9.96
+685,Pasta Arrabiata,vegan,21.92
+686,Fruit Salad,vegan,7.85
+687,Chow Mein,beverage,9.47
+688,Grilled Fish,sweet,23.08
+689,Sparkling Water,mild,24.7
+690,Chocolate Cake,savory,19.13
+691,Mango Juice,vegan,18.25
+692,Milkshake,fast food,19.84
+693,Vanilla Cake,mild,12.88
+694,Grilled Fish,savory,18.33
+695,Milkshake,savory,22.02
+696,Brownie,fast food,23.26
+697,Brownie,vegan,4.6
+698,BBQ Chicken Pizza,mild,20.56
+699,Cheesecake,mild,10.99
+700,Chow Mein,spicy,23.91
+701,Falafel Wrap,savory,19.26
+702,Latte,dessert,16.27
+703,Greek Salad,vegan,13.62
+704,Quesadilla,fast food,24.75
+705,Grilled Chicken Burger,spicy,9.43
+706,Falafel Wrap,spicy,9.3
+707,Cheese Burger,fast food,17.13
+708,Roast Lamb,savory,13.65
+709,Ramen Bowl,fast food,11.64
+710,Ramen Bowl,sweet,22.75
+711,Burrito,vegan,19.16
+712,Cereal Bowl,fast food,22.24
+713,Tomato Soup,dessert,13.04
+714,Waffles,savory,20.64
+715,Granola Yogurt,sweet,5.94
+716,Quesadilla,mild,3.82
+717,Garlic Bread,vegan,22.55
+718,Hot Chocolate,sweet,21.78
+719,BBQ Chicken Pizza,spicy,24.13
+720,Chicken Biryani,vegan,23.05
+721,Donut,savory,11.33
+722,Masala Chai,mild,23.42
+723,Greek Salad,savory,16.08
+724,Greek Salad,sweet,7.45
+725,Pasta Alfredo,mild,20.58
+726,Mango Juice,vegan,6.45
+727,Nachos,beverage,23.42
+728,Cheese Burger,mild,8.96
+729,Tomato Soup,savory,2.65
+730,Hummus with Pita,spicy,19.12
+731,Grilled Chicken Burger,savory,20.2
+732,Lemonade,vegan,6.87
+733,Sushi Roll,spicy,19.09
+734,Hummus with Pita,mild,7.44
+735,Pasta Alfredo,beverage,22.78
+736,Tomato Soup,fast food,2.23
+737,Orange Juice,dessert,7.23
+738,Club Sandwich,mild,8.6
+739,Pasta Arrabiata,spicy,4.72
+740,Smoothie Bowl,beverage,12.62
+741,Orange Juice,vegan,22.75
+742,Grilled Fish,beverage,23.11
+743,Mac and Cheese,beverage,22.85
+744,Pasta Alfredo,fast food,23.55
+745,Tomato Soup,spicy,22.86
+746,Grilled Fish,vegan,18.25
+747,Greek Salad,fast food,3.78
+748,French Toast,sweet,3.64
+749,Cheesecake,fast food,10.92
+750,Mango Juice,fast food,13.37
+751,Hot Chocolate,sweet,17.69
+752,Fried Chicken,sweet,10.77
+753,Sparkling Water,fast food,20.83
+754,Green Tea,vegan,3.95
+755,French Fries,sweet,22.3
+756,Burrito,fast food,9.9
+757,Energy Drink,mild,18.8
+758,French Fries,savory,14.78
+759,Ice Cream Sundae,savory,19.07
+760,Shawarma Roll,beverage,5.4
+761,Chicken Biryani,dessert,2.46
+762,Energy Drink,fast food,7.83
+763,Fruit Salad,beverage,11.42
+764,Mushroom Soup,beverage,14.55
+765,Shawarma Roll,savory,16.55
+766,Mushroom Soup,sweet,20.07
+767,Cereal Bowl,sweet,7.59
+768,Quesadilla,sweet,16.81
+769,Cereal Bowl,beverage,2.89
+770,Energy Drink,dessert,17.68
+771,Granola Yogurt,mild,18.72
+772,Herbal Tea,sweet,20.73
+773,Veg Sandwich,dessert,12.76
+774,Tomato Soup,dessert,22.15
+775,Fried Chicken,fast food,21.73
+776,BBQ Chicken Pizza,savory,13.58
+777,Chicken Soup,fast food,25.0
+778,Grilled Fish,fast food,4.78
+779,Margherita Pizza,savory,8.97
+780,Fried Rice,beverage,9.02
+781,French Toast,beverage,21.68
+782,Burrito,fast food,7.34
+783,Hummus with Pita,sweet,4.4
+784,Roast Lamb,sweet,2.67
+785,Club Sandwich,savory,3.19
+786,Milkshake,vegan,10.58
+787,Fried Rice,savory,2.65
+788,Falafel Wrap,mild,5.51
+789,Green Tea,dessert,16.53
+790,Pasta Arrabiata,vegan,7.21
+791,Ice Cream Sundae,beverage,14.07
+792,Tomato Soup,mild,16.03
+793,Grilled Fish,fast food,24.68
+794,Chow Mein,sweet,7.79
+795,Cheesecake,vegan,16.3
+796,Cheese Burger,vegan,3.91
+797,Falafel Wrap,mild,11.7
+798,Donut,dessert,11.12
+799,Ice Cream Sundae,sweet,11.0
+800,Energy Drink,spicy,10.22
+801,Avocado Toast,spicy,14.89
+802,Cappuccino,fast food,13.15
+803,Sushi Roll,fast food,18.0
+804,Veg Pulao,savory,23.36
+805,Fried Chicken,spicy,20.9
+806,Mushroom Soup,sweet,14.29
+807,Chicken Biryani,sweet,24.47
+808,Club Sandwich,savory,18.77
+809,Veg Sandwich,mild,12.21
+810,BBQ Chicken Pizza,mild,3.64
+811,Paneer Tikka Pizza,spicy,2.92
+812,Cheesecake,sweet,23.07
+813,Ice Cream Sundae,vegan,3.18
+814,Milkshake,savory,14.3
+815,Latte,beverage,3.93
+816,Latte,dessert,17.55
+817,BBQ Chicken Pizza,spicy,3.34
+818,Pasta Arrabiata,fast food,5.45
+819,Nachos,beverage,7.24
+820,Lemonade,mild,16.83
+821,Falafel Wrap,dessert,3.37
+822,Falafel Wrap,dessert,18.58
+823,Pancakes,vegan,21.38
+824,Fruit Salad,fast food,21.17
+825,Fruit Salad,dessert,12.73
+826,French Toast,dessert,17.37
+827,Grilled Chicken Burger,spicy,10.79
+828,Club Sandwich,spicy,9.47
+829,Fried Chicken,beverage,2.44
+830,Margherita Pizza,fast food,8.34
+831,Garlic Bread,dessert,18.97
+832,Latte,dessert,7.12
+833,Cereal Bowl,sweet,14.13
+834,Hot Chocolate,sweet,10.75
+835,BBQ Chicken Pizza,vegan,17.92
+836,Herbal Tea,dessert,8.3
+837,Granola Yogurt,dessert,22.01
+838,Chow Mein,savory,23.55
+839,Orange Juice,mild,11.7
+840,Steak,dessert,18.61
+841,Veg Sandwich,spicy,16.16
+842,Hot Chocolate,beverage,9.21
+843,Sushi Roll,dessert,19.16
+844,Pancakes,beverage,14.25
+845,Waffles,fast food,9.3
+846,Fried Chicken,dessert,7.61
+847,Chicken Biryani,fast food,11.98
+848,Greek Salad,savory,9.73
+849,Dumplings,savory,21.21
+850,Masala Chai,dessert,20.18
+851,Quesadilla,vegan,14.7
+852,Quesadilla,mild,18.16
+853,Iced Coffee,dessert,7.68
+854,Herbal Tea,spicy,3.82
+855,Vanilla Cake,fast food,19.74
+856,Masala Chai,fast food,19.96
+857,Brownie,fast food,11.61
+858,Fried Rice,spicy,12.63
+859,Smoothie Bowl,spicy,19.1
+860,Waffles,dessert,10.31
+861,Milkshake,vegan,21.27
+862,Ramen Bowl,savory,15.98
+863,Veg Pulao,dessert,11.33
+864,Egg Sandwich,savory,21.2
+865,Tomato Soup,mild,2.97
+866,Fried Rice,sweet,11.39
+867,Double Beef Burger,vegan,16.72
+868,Veg Sandwich,fast food,9.19
+869,Energy Drink,dessert,20.47
+870,Roast Lamb,spicy,4.41
+871,Fried Rice,vegan,14.55
+872,Dumplings,beverage,11.29
+873,Double Beef Burger,savory,18.62
+874,Cappuccino,dessert,20.05
+875,Steak,dessert,3.37
+876,Fried Chicken,beverage,2.97
+877,Onion Rings,mild,19.88
+878,Cereal Bowl,spicy,15.12
+879,Grilled Fish,dessert,22.37
+880,Pancakes,spicy,3.03
+881,Cereal Bowl,savory,8.42
+882,Pancakes,beverage,4.99
+883,Dumplings,mild,21.06
+884,Double Beef Burger,fast food,6.02
+885,Cereal Bowl,savory,2.47
+886,Chicken Soup,mild,18.16
+887,Onion Rings,spicy,24.02
+888,Masala Chai,mild,17.97
+889,Green Tea,spicy,9.1
+890,Quesadilla,vegan,4.58
+891,Pepperoni Pizza,fast food,11.11
+892,Onion Rings,fast food,22.19
+893,Pasta Arrabiata,beverage,4.44
+894,Donut,beverage,18.96
+895,Steak,fast food,18.71
+896,Caesar Salad,savory,22.21
+897,Garlic Bread,mild,7.95
+898,Chicken Biryani,vegan,11.02
+899,Hot Chocolate,vegan,15.38
+900,Cheesecake,dessert,4.24
+901,Waffles,dessert,7.88
+902,Grilled Fish,vegan,24.85
+903,Hot Chocolate,beverage,19.59
+904,Green Tea,beverage,22.46
+905,Grilled Fish,spicy,3.47
+906,Hot Chocolate,dessert,9.38
+907,Avocado Toast,spicy,22.03
+908,Granola Yogurt,savory,20.0
+909,Onion Rings,sweet,8.23
+910,Ice Cream Sundae,dessert,21.65
+911,Tomato Soup,savory,13.47
+912,Fried Rice,spicy,21.63
+913,Quesadilla,spicy,22.03
+914,Egg Sandwich,dessert,17.56
+915,Masala Chai,mild,18.5
+916,Mushroom Soup,fast food,15.19
+917,Steak,mild,3.98
+918,Pasta Alfredo,sweet,10.37
+919,Falafel Wrap,savory,17.81
+920,Onion Rings,dessert,16.32
+921,Hot Chocolate,savory,9.64
+922,Hummus with Pita,beverage,18.63
+923,Chow Mein,savory,14.34
+924,Chow Mein,mild,18.13
+925,Club Sandwich,sweet,17.58
+926,Burrito,dessert,12.86
+927,Cheesecake,sweet,24.55
+928,Vanilla Cake,sweet,20.11
+929,Avocado Toast,beverage,23.64
+930,Lemonade,vegan,2.31
+931,Cappuccino,beverage,5.58
+932,Nachos,beverage,9.78
+933,Sparkling Water,fast food,3.44
+934,Chicken Soup,sweet,23.46
+935,Latte,mild,3.41
+936,Iced Coffee,fast food,9.72
+937,Smoothie Bowl,vegan,20.68
+938,Sparkling Water,vegan,23.08
+939,Veg Sandwich,fast food,15.03
+940,Chicken Soup,dessert,21.11
+941,Fried Chicken,spicy,10.16
+942,Fried Chicken,dessert,24.05
+943,Grilled Fish,spicy,2.09
+944,Shawarma Roll,beverage,3.48
+945,Pasta Arrabiata,vegan,19.37
+946,Paneer Tikka Pizza,beverage,2.16
+947,Fried Chicken,sweet,9.14
+948,French Toast,beverage,20.16
+949,Ice Cream Sundae,dessert,11.87
+950,Chicken Biryani,fast food,20.24
+951,BBQ Chicken Pizza,spicy,22.2
+952,Fried Rice,dessert,2.31
+953,Fried Chicken,beverage,9.19
+954,Margherita Pizza,spicy,24.33
+955,Veg Pulao,sweet,5.16
+956,French Toast,mild,3.73
+957,Cheese Burger,savory,3.36
+958,Masala Chai,mild,23.39
+959,Masala Chai,spicy,22.47
+960,Tomato Soup,spicy,5.82
+961,Lemonade,mild,12.05
+962,Lemonade,fast food,14.4
+963,Latte,spicy,12.35
+964,Masala Chai,sweet,6.11
+965,Mango Juice,sweet,7.11
+966,Fried Chicken,mild,10.33
+967,Margherita Pizza,beverage,11.46
+968,Sushi Roll,savory,18.54
+969,Nachos,sweet,10.86
+970,Mushroom Soup,fast food,20.73
+971,Dumplings,vegan,11.69
+972,Smoothie Bowl,fast food,17.46
+973,Ramen Bowl,sweet,9.84
+974,Falafel Wrap,savory,6.41
+975,Veg Pulao,vegan,5.9
+976,Cereal Bowl,sweet,4.18
+977,Donut,dessert,4.32
+978,Green Tea,vegan,16.8
+979,Masala Chai,vegan,15.11
+980,Sparkling Water,vegan,10.02
+981,Ice Cream Sundae,spicy,19.7
+982,Chicken Soup,vegan,4.23
+983,Greek Salad,dessert,24.32
+984,Egg Sandwich,mild,2.74
+985,Nachos,spicy,17.19
+986,Smoothie Bowl,beverage,14.38
+987,Veg Sandwich,vegan,19.42
+988,Pepperoni Pizza,mild,23.56
+989,Energy Drink,dessert,13.38
+990,Nachos,savory,8.32
+991,Falafel Wrap,spicy,19.09
+992,Sparkling Water,mild,3.02
+993,Milkshake,mild,16.94
+994,Fried Chicken,fast food,14.93
+995,Quesadilla,savory,10.79
+996,Donut,dessert,12.41
+997,Fried Rice,beverage,20.94
+998,Club Sandwich,beverage,8.5
+999,Grilled Fish,mild,12.56
+1000,Brownie,dessert,5.11

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+scikit-learn
+joblib
+sqlalchemy
+pymysql         # if using MySQL RDS
+python-dotenv
+python-multipart
+# optional heavy deps (only if you want server-side transcription)
+ # or openai-whisper
+torch            # ensure correct torch for your machine; heavy
