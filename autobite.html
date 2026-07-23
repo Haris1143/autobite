@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AutoBite — Voice Veg Food</title>
+<style>
+:root{
+  --bg:#080808;--surf:#131313;--surf2:#1c1c1c;--surf3:#252525;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --accent:#ff5722;--accent2:#ff8a65;--accentl:rgba(255,87,34,0.13);
+  --text:#f4efe9;--muted:#888;--muted2:#4a4a4a;
+  --green:#22c55e;--greenl:rgba(34,197,94,0.12);
+  --r:16px;--r2:11px;--r3:50px;
+  --shadow:0 8px 32px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--muted2);border-radius:4px}
+
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(8,8,8,0.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;gap:1rem;
+}
+.logo{font-size:1.35rem;font-weight:800;letter-spacing:-1px;white-space:nowrap}
+.logo em{color:var(--accent);font-style:normal}
+.logo small{font-size:.55rem;background:var(--greenl);color:var(--green);border:1px solid rgba(34,197,94,.3);border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:middle;font-weight:600}
+.hdr-right{display:flex;align-items:center;gap:.6rem}
+.mic-hdr{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--accent);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:.95rem;
+  transition:transform .15s;position:relative;
+}
+.mic-hdr:hover{transform:scale(1.1)}
+.mic-hdr.on{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,87,34,.7)}70%{box-shadow:0 0 0 12px rgba(255,87,34,0)}100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}}
+.cart-btn{
+  display:flex;align-items:center;gap:7px;
+  background:var(--surf2);border:1px solid var(--border2);
+  border-radius:var(--r3);padding:.45rem .95rem;
+  cursor:pointer;font-size:.85rem;color:var(--text);
+  transition:border-color .2s;white-space:nowrap;
+}
+.cart-btn:hover{border-color:var(--accent)}
+.cart-badge{
+  background:var(--accent);color:#fff;border-radius:50%;
+  width:19px;height:19px;display:flex;align-items:center;
+  justify-content:center;font-size:.68rem;font-weight:700;
+}
+
+/* ── VOICE BANNER ── */
+.voice-banner{
+  background:linear-gradient(135deg,#120800 0%,#0a0a0a 60%,#080808 100%);
+  border-bottom:1px solid var(--border);
+  padding:1.75rem 1.5rem 1.25rem;
+  display:flex;flex-direction:column;align-items:center;gap:.85rem;
+  text-align:center;
+}
+.vb-headline{font-size:1.6rem;font-weight:800;letter-spacing:-.5px;line-height:1.2}
+.vb-headline em{color:var(--accent);font-style:normal}
+.vb-sub{color:var(--muted);font-size:.88rem;max-width:340px;line-height:1.6}
+
+/* MIC BUTTON */
+.mic-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+.mic-pulse-ring{
+  position:absolute;width:96px;height:96px;border-radius:50%;
+  border:2px solid var(--accent);opacity:0;pointer-events:none;
+}
+.mic-btn-main{
+  width:76px;height:76px;border-radius:50%;
+  background:linear-gradient(145deg,#ff6d3f,#ff3d00);
+  border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.9rem;box-shadow:0 4px 20px rgba(255,87,34,.4);
+  transition:transform .15s;z-index:1;position:relative;
+}
+.mic-btn-main:hover{transform:scale(1.06)}
+.mic-btn-main.on{animation:pulse 1s ease-in-out infinite}
+.mic-btn-main.on~.mic-pulse-ring:nth-child(2){animation:ringOut 1.4s ease-out infinite}
+.mic-btn-main.on~.mic-pulse-ring:nth-child(3){animation:ringOut 1.4s ease-out .35s infinite}
+@keyframes ringOut{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.7);opacity:0}}
+
+/* STATUS */
+.status-pill{
+  display:flex;align-items:center;gap:8px;
+  background:var(--surf2);border:1px solid var(--border2);
+  border-radius:var(--r3);padding:.4rem 1.1rem;
+  font-size:.82rem;color:var(--muted);min-width:270px;justify-content:center;
+  transition:all .3s;
+}
+.status-pill.on{border-color:var(--accent);color:var(--accent2)}
+.status-pill.ok{border-color:var(--green);color:var(--green)}
+.status-pill.err{border-color:#ef4444;color:#ef4444}
+.s-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.status-pill.on .s-dot{animation:blink .7s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+
+/* VOICE FIX BOX */
+.voice-fix{
+  background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);
+  border-radius:var(--r2);padding:.75rem 1rem;margin:.5rem 1.5rem;
+  font-size:.82rem;color:#fca5a5;line-height:1.6;display:none;
+}
+.voice-fix.show{display:block}
+.voice-fix strong{color:#f87171;display:block;margin-bottom:.25rem}
+
+/* TRANSCRIPT */
+.transcript{
+  background:var(--surf2);border:1px solid var(--border2);
+  border-left:3px solid var(--accent);
+  border-radius:var(--r2);padding:.6rem 1rem;
+  font-size:.88rem;margin:.4rem 1.5rem;display:none;
+  animation:fadeUp .2s ease;
+}
+.transcript.show{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+
+/* QUICK CHIPS */
+.chips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;padding:.4rem 1.5rem .1rem}
+.chip{
+  background:var(--surf2);border:1px solid var(--border);
+  border-radius:var(--r3);padding:.28rem .75rem;
+  font-size:.75rem;color:var(--muted);cursor:pointer;transition:all .18s;
+}
+.chip:hover{border-color:var(--accent);color:var(--accent2);background:var(--accentl)}
+.chip::before{content:'🎙 ';font-size:.7rem}
+
+/* ── MAIN ── */
+main{max-width:1080px;margin:0 auto;padding:1.25rem 1.25rem 3rem}
+
+/* SECTION */
+.sec{margin-bottom:2rem}
+.sec-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
+.sec-hdr h2{font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.sec-hdr small{font-size:.75rem;color:var(--muted)}
+
+/* INTENT BADGE */
+.intent-badge{
+  background:var(--accentl);border:1px solid rgba(255,87,34,.25);
+  color:var(--accent2);border-radius:var(--r3);
+  padding:.25rem .75rem;font-size:.75rem;font-weight:600;
+}
+
+/* FILTERS */
+.filters{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;margin-bottom:.9rem;padding-bottom:2px}
+.filters::-webkit-scrollbar{height:2px}
+.flt{
+  background:var(--surf2);border:1px solid var(--border);
+  border-radius:var(--r3);padding:.3rem .8rem;
+  font-size:.78rem;color:var(--muted);cursor:pointer;
+  transition:all .18s;white-space:nowrap;flex-shrink:0;
+}
+.flt.on,.flt:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* FOOD GRID */
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:.85rem}
+
+/* FOOD CARD */
+.food-card{
+  background:var(--surf);border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;cursor:pointer;
+  transition:border-color .2s,transform .22s,box-shadow .22s;
+  display:flex;flex-direction:column;
+}
+.food-card:hover{
+  border-color:rgba(255,87,34,.5);transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(0,0,0,.5);
+}
+.food-card.glow{border-color:var(--green);box-shadow:0 0 0 2px var(--greenl)}
+.food-card.pop{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.05)}100%{transform:scale(1)}}
+
+/* CARD IMAGE */
+.card-img{position:relative;height:140px;overflow:hidden;background:var(--surf2)}
+.card-img img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;transition:transform .35s;
+}
+.food-card:hover .card-img img{transform:scale(1.08)}
+.veg-dot{
+  position:absolute;top:8px;left:8px;
+  width:16px;height:16px;border-radius:3px;
+  background:#fff;border:1.5px solid var(--green);
+  display:flex;align-items:center;justify-content:center;
+}
+.veg-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);display:block}
+.cat-tag{
+  position:absolute;top:8px;right:8px;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(4px);
+  border-radius:var(--r3);padding:2px 7px;
+  font-size:.65rem;color:#ccc;text-transform:capitalize;
+}
+.img-overlay{
+  position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 50%);
+  opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:.5rem;
+}
+.food-card:hover .img-overlay{opacity:1}
+.say-hint{font-size:.68rem;color:rgba(255,255,255,.8)}
+
+/* CARD BODY */
+.card-body{padding:.7rem .8rem;flex:1;display:flex;flex-direction:column;gap:3px}
+.card-name{font-size:.88rem;font-weight:600;line-height:1.3}
+.card-desc{font-size:.72rem;color:var(--muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.4rem}
+.card-price{font-weight:700;color:var(--accent2);font-size:.9rem}
+.add-btn{
+  background:var(--accent);color:#fff;border:none;
+  border-radius:var(--r3);padding:.28rem .7rem;
+  font-size:.75rem;cursor:pointer;font-weight:600;
+  transition:opacity .15s;
+}
+.add-btn:hover{opacity:.82}
+
+/* ── CART PANEL ── */
+.cart-mask{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:80;opacity:0;pointer-events:none;transition:opacity .28s}
+.cart-mask.on{opacity:1;pointer-events:all}
+.cart-panel{
+  position:fixed;right:0;top:0;bottom:0;width:350px;
+  background:#0f0f0f;border-left:1px solid var(--border2);
+  z-index:90;display:flex;flex-direction:column;
+  transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.cart-panel.on{transform:translateX(0)}
+.cart-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 1.2rem .8rem;border-bottom:1px solid var(--border);
+}
+.cart-hdr h3{font-size:.95rem;font-weight:700}
+.x-btn{
+  background:var(--surf2);border:1px solid var(--border);
+  color:var(--muted);border-radius:50%;width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.85rem;
+}
+.cart-list{flex:1;overflow-y:auto;padding:.65rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.cart-empty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.cart-empty-icon{font-size:2.5rem;margin-bottom:.5rem}
+.c-item{
+  background:var(--surf2);border:1px solid var(--border);
+  border-radius:var(--r2);display:flex;gap:9px;padding:.55rem;align-items:center;
+}
+.c-thumb{width:44px;height:44px;border-radius:8px;object-fit:cover;background:var(--surf3);flex-shrink:0}
+.c-info{flex:1;min-width:0}
+.c-name{font-size:.82rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.c-price{font-size:.75rem;color:var(--accent2)}
+.qty{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.q-btn{
+  background:var(--surf3);border:1px solid var(--border);
+  color:var(--text);border-radius:50%;width:22px;height:22px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:.85rem;transition:border-color .18s;
+}
+.q-btn:hover{border-color:var(--accent)}
+.q-num{font-size:.82rem;font-weight:600;min-width:16px;text-align:center}
+.cart-foot{padding:.8rem 1.2rem;border-top:1px solid var(--border)}
+.tot-row{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:.35rem}
+.tot-row.grand{font-weight:700;font-size:.95rem;color:var(--text);margin-top:.4rem;padding-top:.4rem;border-top:1px solid var(--border)}
+.upi-btn{
+  width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;border:none;border-radius:var(--r3);
+  padding:.8rem;font-size:.9rem;font-weight:700;cursor:pointer;
+  margin-top:.7rem;transition:opacity .18s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.upi-btn:hover{opacity:.9}
+.upi-btn:disabled{opacity:.35;cursor:not-allowed}
+
+/* ── UPI MODAL ── */
+.modal-bg{
+  position:fixed;inset:0;background:rgba(0,0,0,.88);
+  z-index:110;display:none;align-items:center;justify-content:center;padding:1rem;
+}
+.modal-bg.on{display:flex}
+.modal{
+  background:var(--surf);border:1px solid var(--border2);
+  border-radius:var(--r);width:100%;max-width:400px;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.modal-top{
+  padding:1.1rem 1.3rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-top h3{font-size:.95rem;font-weight:700;display:flex;align-items:center;gap:6px}
+.modal-body{padding:1.3rem}
+
+/* UPI VIEW */
+.upi-amount-box{text-align:center;margin-bottom:1.1rem}
+.upi-amount-box .lbl{font-size:.75rem;color:var(--muted);margin-bottom:.2rem}
+.upi-amount-box .val{font-size:2.1rem;font-weight:800;color:var(--accent2)}
+
+.qr-area{
+  background:var(--surf2);border:1px solid var(--border2);
+  border-radius:var(--r2);padding:1.1rem;
+  display:flex;flex-direction:column;align-items:center;gap:.65rem;
+  margin-bottom:1rem;
+}
+#qrCanvas{border-radius:8px;display:block}
+.qr-sub{font-size:.75rem;color:var(--muted);text-align:center}
+
+.upi-apps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:1rem}
+.upi-app{
+  background:var(--surf2);border:1px solid var(--border);
+  border-radius:var(--r2);padding:.55rem .3rem;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  cursor:pointer;transition:all .18s;font-size:.68rem;color:var(--muted);
+}
+.upi-app:hover,.upi-app.on{border-color:var(--accent);color:var(--accent2);background:var(--accentl)}
+.upi-app span{font-size:1.5rem}
+
+.divider{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border2)}
+.divider p{font-size:.72rem;color:var(--muted2);white-space:nowrap}
+
+.upi-field label{font-size:.75rem;color:var(--muted);display:block;margin-bottom:.35rem}
+.upi-field input{
+  width:100%;background:var(--surf2);border:1px solid var(--border2);
+  border-radius:var(--r2);padding:.65rem .9rem;
+  font-size:.88rem;color:var(--text);outline:none;transition:border-color .2s;
+}
+.upi-field input:focus{border-color:var(--accent)}
+.upi-field input::placeholder{color:var(--muted2)}
+
+.pay-now{
+  width:100%;background:linear-gradient(135deg,#22c55e,#16a34a);
+  color:#fff;border:none;border-radius:var(--r3);
+  padding:.8rem;font-size:.9rem;font-weight:700;cursor:pointer;
+  margin-top:.9rem;transition:opacity .18s;
+}
+.pay-now:hover{opacity:.9}
+.secure-note{font-size:.72rem;color:var(--muted2);text-align:center;margin-top:.55rem}
+
+/* PROCESSING */
+#processingView{text-align:center;padding:2rem}
+#processingView .spin{font-size:3rem;animation:spin 1.2s linear infinite;display:block;margin-bottom:.75rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* SUCCESS */
+#successView{text-align:center;padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.success-icon{font-size:3.5rem;animation:popBounce .5s ease}
+@keyframes popBounce{0%{transform:scale(.4)}70%{transform:scale(1.18)}100%{transform:scale(1)}}
+#successView h3{font-size:1.2rem;font-weight:800;color:var(--green)}
+#successView p{color:var(--muted);font-size:.83rem;line-height:1.6}
+.order-id{
+  background:var(--greenl);border:1px solid rgba(34,197,94,.25);
+  color:var(--green);border-radius:var(--r3);
+  padding:.28rem .85rem;font-size:.78rem;font-weight:700;
+}
+.back-home{
+  background:var(--surf2);border:1px solid var(--border2);
+  color:var(--text);border-radius:var(--r3);padding:.6rem 1.4rem;
+  font-size:.85rem;cursor:pointer;transition:border-color .18s;margin-top:.3rem;
+}
+.back-home:hover{border-color:var(--accent)}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  background:var(--surf);border:1px solid var(--border2);
+  border-radius:var(--r3);padding:.5rem 1.1rem;
+  font-size:.82rem;z-index:200;opacity:0;
+  transition:opacity .22s;pointer-events:none;white-space:nowrap;
+  box-shadow:var(--shadow);
+}
+.toast.on{opacity:1}
+.toast.ok{border-color:var(--green);color:var(--green)}
+.toast.info{border-color:var(--accent);color:var(--accent2)}
+.toast.err{border-color:#ef4444;color:#ef4444}
+
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">Auto<em>Bite</em> <small>100% VEG</small></div>
+  <div class="hdr-right">
+    <button class="mic-hdr" id="micHdr" onclick="toggleMic()" title="Press Space or tap to speak">🎙️</button>
+    <button class="cart-btn" onclick="openCart()">🛒 Cart <span class="cart-badge" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<!-- VOICE BANNER -->
+<div class="voice-banner">
+  <div>
+    <div class="vb-headline">Order with your <em>Voice</em></div>
+    <div class="vb-sub">Say "Order Masala Dosa" — it's in your cart. Speak your craving, hands stay free.</div>
+  </div>
+  <div class="mic-wrap" onclick="toggleMic()">
+    <button class="mic-btn-main" id="micMain">🎙️</button>
+    <div class="mic-pulse-ring"></div>
+    <div class="mic-pulse-ring"></div>
+  </div>
+  <div class="status-pill" id="statusPill">
+    <span class="s-dot"></span>
+    <span id="statusTxt">Tap mic and say a dish name</span>
+  </div>
+</div>
+
+<!-- VOICE FIX NOTICE -->
+<div class="voice-fix" id="voiceFix">
+  <strong>⚠️ Voice not working? Here's why & how to fix it:</strong>
+  1. <b>Open this file via a server</b> — run <code>python -m http.server 8000</code> in the project folder, then go to <code>http://localhost:8000/autobite.html</code><br>
+  2. <b>Allow microphone</b> when Chrome asks — click "Allow" in the popup<br>
+  3. <b>Use Chrome or Edge</b> — Firefox/Safari don't fully support Web Speech API<br>
+  4. If on <b>mobile</b>: open in Chrome browser, not in-app browser
+</div>
+
+<!-- TRANSCRIPT -->
+<div class="transcript" id="transcript"></div>
+
+<!-- QUICK VOICE CHIPS -->
+<div class="chips">
+  <span class="chip" onclick="sim('order masala dosa')">order masala dosa</span>
+  <span class="chip" onclick="sim('I want paneer butter masala')">paneer butter masala</span>
+  <span class="chip" onclick="sim('add veg biryani')">add veg biryani</span>
+  <span class="chip" onclick="sim('order samosa')">order samosa</span>
+  <span class="chip" onclick="sim('open cart')">open cart</span>
+  <span class="chip" onclick="sim('checkout')">checkout</span>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- AI PICKS (shown after voice) -->
+  <div class="sec hidden" id="recSec">
+    <div class="sec-hdr">
+      <h2>🤖 AI Picks for You <span class="intent-badge" id="intentBadge"></span></h2>
+    </div>
+    <div class="food-grid" id="recGrid"></div>
+  </div>
+
+  <!-- FULL MENU -->
+  <div class="sec">
+    <div class="sec-hdr">
+      <h2>👤 Haris — Last 10 Orders</h2>
+      <small>Favorite dishes he keeps ordering</small>
+    </div>
+    <div class="food-grid" id="harisGrid"></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-hdr">
+      <h2>🌿 Veg Menu — 35 Favourites</h2>
+      <small>100% vegetarian · Say any dish name to order instantly</small>
+    </div>
+    <div class="filters" id="filterRow"></div>
+    <div class="food-grid" id="menuGrid"></div>
+  </div>
+
+</main>
+
+<!-- CART PANEL -->
+<div class="cart-mask" id="cartMask" onclick="closeCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-hdr">
+    <h3>Your Order 🛒</h3>
+    <button class="x-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-list" id="cartList">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <p>Empty cart.<br>Say a dish name to start!</p>
+    </div>
+  </div>
+  <div id="addressPanel" class="address-panel hidden">
+    <div class="address-title">Delivery Address</div>
+    <div class="address-line" id="addressLine">Use voice: "deliver to 123 Main Street" or say "use home address"</div>
+    <div class="addr-buttons">
+      <button class="addr-btn" onclick="selectAddress('Home')">Home</button>
+      <button class="addr-btn" onclick="selectAddress('Office')">Office</button>
+      <button class="addr-btn" onclick="selectAddress('Other')">Other</button>
+    </div>
+  </div>
+  <div id="cartFoot" class="hidden">
+    <div class="cart-foot">
+      <div class="tot-row"><span>Subtotal</span><span id="tSub">₹0</span></div>
+      <div class="tot-row"><span>Delivery</span><span>₹29</span></div>
+      <div class="tot-row"><span>Tax (5%)</span><span id="tTax">₹0</span></div>
+      <div class="tot-row grand"><span>Total</span><span id="tGrand">₹0</span></div>
+      <button class="upi-btn" id="upiBtn" onclick="openUPI()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Pay via UPI
+      </button>
+      <button class="cod-btn" id="codBtn" onclick="placeOrderCOD()">Cash on Delivery</button>
+    </div>
+  </div>
+</div>
+
+<!-- UPI PAYMENT MODAL -->
+<div class="modal-bg" id="payBg">
+  <div class="modal">
+    <div class="modal-top">
+      <h3>💳 Pay via UPI</h3>
+      <button class="x-btn" onclick="closeUPI()">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- UPI VIEW -->
+      <div id="upiView">
+        <div class="upi-amount-box">
+          <div class="lbl">Amount to Pay</div>
+          <div class="val" id="upiAmt">₹0</div>
+        </div>
+
+        <div class="qr-area">
+          <canvas id="qrCanvas" width="155" height="155"></canvas>
+          <div class="qr-sub">📱 Scan with any UPI app · AutoBite@okicici</div>
+        </div>
+
+        <div style="font-size:.75rem;color:var(--muted);margin-bottom:.55rem">Or open directly in your app:</div>
+        <div class="upi-apps-row">
+          <div class="upi-app" onclick="launchApp(this,'gpay')"><span>🟢</span>GPay</div>
+          <div class="upi-app" onclick="launchApp(this,'phonepe')"><span>🟣</span>PhonePe</div>
+          <div class="upi-app" onclick="launchApp(this,'paytm')"><span>🔵</span>Paytm</div>
+          <div class="upi-app" onclick="launchApp(this,'bhim')"><span>🇮🇳</span>BHIM</div>
+        </div>
+
+        <div class="divider"><p>or enter UPI ID manually</p></div>
+
+        <div class="upi-field">
+          <label>Your UPI ID</label>
+          <input id="upiInput" type="text" placeholder="yourname@paytm  /  @okicici  /  @ybl"/>
+        </div>
+
+        <button class="pay-now" onclick="doPay()">✅ Confirm & Pay Now</button>
+        <div class="secure-note">🔒 Secured by NPCI · UPI 2.0</div>
+      </div>
+
+      <!-- PROCESSING -->
+      <div id="processingView" class="hidden">
+        <span class="spin">⏳</span>
+        <div style="font-weight:600;margin-bottom:.4rem">Processing Payment…</div>
+        <div style="font-size:.82rem;color:var(--muted)">Please do not close this window</div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="successView" class="hidden">
+        <div class="success-icon">🎉</div>
+        <h3>Payment Successful!</h3>
+        <div class="order-id" id="orderId">Order #AB000000</div>
+        <p>Your order has been placed!<br>Estimated delivery: <strong>25–35 minutes</strong></p>
+        <p style="font-size:.75rem;color:var(--muted2)">Confirmation will be sent to your UPI app</p>
+        <button class="back-home" onclick="resetAll()">🏠 Order More Food</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+//  VEG MENU — 10 basic Indian veg favourites (each with a matching photo)
+// ══════════════════════════════════════════
+const MENU = [
+  {id:1,  name:'Masala Dosa',          cat:'south indian', price:89,  desc:'Crispy golden dosa with spiced potato filling, served with sambar & chutneys',
+   img:'https://images.unsplash.com/photo-1743615467204-8fdaa85ff2db?w=500&q=85', tags:['dosa','crispy','south indian','breakfast','veg']},
+  {id:2,  name:'Idli Sambar',          cat:'south indian', price:69,  desc:'Steamed soft idlis with piping hot sambar and coconut chutney',
+   img:'https://images.unsplash.com/photo-1741376509109-e9edd6f24f5f?w=500&q=85', tags:['idli','soft','south indian','breakfast','veg']},
+  {id:3,  name:'Paneer Butter Masala', cat:'north indian', price:199, desc:'Rich creamy tomato gravy with soft paneer cubes — a classic favourite',
+   img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&q=85', tags:['paneer','curry','north indian','rich','veg']},
+  {id:4,  name:'Dal Makhani',          cat:'north indian', price:169, desc:'Black lentils slow-cooked overnight with butter, cream and spices',
+   img:'https://images.unsplash.com/photo-1655785382092-4829c8d9c11a?w=500&q=85', tags:['dal','lentil','north indian','butter','veg']},
+  {id:5,  name:'Chole Bhature',        cat:'north indian', price:139, desc:'Spiced chickpea curry with giant fluffy fried bhature bread',
+   img:'https://images.unsplash.com/photo-1543338861-24992308962f?w=500&q=85', tags:['chole','chickpea','north indian','spicy','veg']},
+  {id:6,  name:'Veg Biryani',          cat:'rice',         price:169, desc:'Fragrant basmati rice layered with vegetables, saffron and fried onions',
+   img:'https://images.unsplash.com/photo-1752673508949-f4aeeaef75f0?w=500&q=85', tags:['biryani','rice','aromatic','veg','special']},
+  {id:7,  name:'Samosa',               cat:'snacks',       price:39,  desc:'Golden crispy pastry filled with spiced potato and peas — 2 per serving',
+   img:'https://images.unsplash.com/photo-1772729996007-40bad08b3c40?w=500&q=85', tags:['samosa','crispy','snack','potato','veg']},
+  {id:8,  name:'Paneer Tikka',         cat:'snacks',       price:199, desc:'Marinated cottage cheese cubes grilled in tandoor with peppers and onions',
+   img:'https://images.unsplash.com/photo-1666001120694-3ebe8fd207be?w=500&q=85', tags:['paneer','tikka','grilled','snack','veg']},
+  {id:9,  name:'Butter Naan',          cat:'breads',       price:45,  desc:'Soft leavened bread baked in tandoor, brushed with butter and garlic',
+   img:'https://images.unsplash.com/photo-1750190624251-f0608cbea657?w=500&q=85', tags:['naan','bread','butter','soft','veg']},
+  {id:10, name:'Gulab Jamun',          cat:'desserts',     price:79,  desc:'Soft milk-solid dumplings soaked in rose-flavoured sugar syrup — 4 pieces',
+   img:'https://images.unsplash.com/photo-1666190092159-3171cf0fbb12?w=500&q=85', tags:['gulab jamun','sweet','dessert','syrup','veg']},
+  {id:11, name:'Aloo Paratha',         cat:'breads',       price:79,  desc:'Stuffed whole wheat paratha with spiced potatoes, served with curd and pickle',
+   img:'https://images.unsplash.com/photo-1660477673135-1a5459d3fdd4?w=500&q=85', tags:['paratha','bread','breakfast','veg']},
+  {id:12, name:'Mysore Masala Dosa',   cat:'south indian', price:109, desc:'Golden dosa layered with spicy potato and coconut chutney',
+   img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&q=85', tags:['dosa','spicy','south indian','veg']},
+  {id:13, name:'Uttapam',              cat:'south indian', price:99,  desc:'Thick fluffy rice pancake topped with onions, tomato and coriander',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=85', tags:['uttapam','south indian','veg']},
+  {id:14, name:'Matar Paneer',         cat:'north indian', price:189, desc:'Green peas and paneer simmered in a rich tomato masala',
+   img:'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&q=85', tags:['paneer','peas','north indian','veg']},
+  {id:15, name:'Kadai Paneer',         cat:'north indian', price:199, desc:'Paneer tossed with onion, capsicum and aromatic kadai masala',
+   img:'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=500&q=85', tags:['paneer','spicy','north indian','veg']},
+  {id:16, name:'Malai Kofta',          cat:'north indian', price:209, desc:'Soft potato and paneer koftas in creamy tomato gravy',
+   img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=85', tags:['kofta','creamy','north indian','veg']},
+  {id:17, name:'Vegetable Korma',      cat:'north indian', price:179, desc:'Mild creamy curry of vegetables and cashews',
+   img:'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500&q=85', tags:['korma','cream','north indian','veg']},
+  {id:18, name:'Rajma Rice Bowl',      cat:'rice',         price:149, desc:'Slow-cooked kidney beans served with aromatic rice',
+   img:'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&q=85', tags:['rajma','rice','beans','veg']},
+  {id:19, name:'Pav Bhaji',            cat:'snacks',       price:129, desc:'Mumbai-style spicy vegetable mash served with buttery pav',
+   img:'https://images.unsplash.com/photo-1625938143140-4d8176fbe7b3?w=500&q=85', tags:['pav bhaji','snack','spicy','veg']},
+  {id:20, name:'Veg Spring Rolls',     cat:'snacks',       price:109, desc:'Crispy rolls filled with shredded vegetables and noodles',
+   img:'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=500&q=85', tags:['spring roll','snack','crispy','veg']},
+  {id:21, name:'Cheese Nachos',        cat:'snacks',       price:129, desc:'Crunchy tortilla chips with melted cheese and salsa',
+   img:'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?w=500&q=85', tags:['nachos','snack','cheese','veg']},
+  {id:22, name:'Lemon Rice',           cat:'rice',         price:99,  desc:'Tangy rice tempered with mustard, curry leaves and lemon',
+   img:'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&q=85', tags:['rice','lemon','south indian','veg']},
+  {id:23, name:'Tomato Rice',          cat:'rice',         price:99,  desc:'Flavourful rice cooked with tomatoes and spices',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?w=500&q=85', tags:['tomato rice','rice','veg']},
+  {id:24, name:'Garlic Naan',          cat:'breads',       price:49,  desc:'Soft naan brushed with garlic butter',
+   img:'https://images.unsplash.com/photo-1616702911153-3620c6b6c7c2?w=500&q=85', tags:['naan','garlic','bread','veg']},
+  {id:25, name:'Stuffed Kulcha',       cat:'breads',       price:69,  desc:'Tandoor-baked kulcha stuffed with spiced potatoes or paneer',
+   img:'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=500&q=85', tags:['kulcha','bread','stuffed','veg']},
+  {id:26, name:'Rasmalai',             cat:'desserts',     price:89,  desc:'Soft cheese dumplings in chilled saffron milk',
+   img:'https://images.unsplash.com/photo-1571877227200-a0d98ea584d5?w=500&q=85', tags:['rasmalai','dessert','sweet','veg']},
+  {id:27, name:'Moong Dal Halwa',      cat:'desserts',     price:99,  desc:'Rich and aromatic halwa made from moong dal',
+   img:'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=500&q=85', tags:['halwa','dessert','sweet','veg']},
+  {id:28, name:'Masala Chai',          cat:'beverages',    price:39,  desc:'Strong spiced milk tea',
+   img:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=85', tags:['chai','tea','beverage','veg']},
+  {id:29, name:'Fresh Lime Soda',      cat:'beverages',    price:49,  desc:'Refreshing citrus soda with mint',
+   img:'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=500&q=85', tags:['soda','lime','beverage','veg']},
+  {id:30, name:'Coconut Lassi',        cat:'beverages',    price:69,  desc:'Creamy yogurt drink with coconut and cardamom',
+   img:'https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=500&q=85', tags:['lassi','drink','beverage','veg']},
+  {id:31, name:'Veg Cutlet',           cat:'snacks',       price:79,  desc:'Crispy cutlets with mashed potatoes and peas',
+   img:'https://images.unsplash.com/photo-1601039641847-7857b994d704?w=500&q=85', tags:['cutlet','snack','crispy','veg']},
+  {id:32, name:'Medu Vada',            cat:'snacks',       price:59,  desc:'Crispy savory lentil doughnuts served hot',
+   img:'https://images.unsplash.com/photo-1564834724105-918b73d1b9e0?w=500&q=85', tags:['vada','snack','crispy','veg']},
+  {id:33, name:'Pani Puri',            cat:'snacks',       price:69,  desc:'Crispy puris filled with spicy tamarind water',
+   img:'https://images.unsplash.com/photo-1600891964052-6d2d8f8a8e22?w=500&q=85', tags:['pani puri','snack','spicy','veg']},
+  {id:34, name:'Bhel Puri',            cat:'snacks',       price:59,  desc:'Crunchy puffed rice snack with chutney and sev',
+   img:'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&q=85', tags:['bhel','snack','crunchy','veg']},
+  {id:35, name:'Chocolate Brownie',    cat:'desserts',     price:89,  desc:'Warm fudgy brownie served with vanilla scoop',
+   img:'https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=500&q=85', tags:['brownie','dessert','chocolate','veg']},
+];
+
+const HARIS_PROFILE = {
+  name:'Haris',
+  previousOrders:[
+    {id:3, name:'Paneer Butter Masala', count:4},
+    {id:6, name:'Veg Biryani', count:3},
+    {id:1, name:'Masala Dosa', count:2},
+    {id:14, name:'Matar Paneer', count:2},
+    {id:19, name:'Pav Bhaji', count:2},
+    {id:24, name:'Garlic Naan', count:1},
+    {id:26, name:'Rasmalai', count:1},
+    {id:28, name:'Masala Chai', count:3},
+    {id:30, name:'Coconut Lassi', count:1},
+    {id:35, name:'Chocolate Brownie', count:1}
+  ]
+};
+
+// ══════════════════════════════════════════
+//  CART
+// ══════════════════════════════════════════
+let cart = [];
+let selectedAddress = 'Home';
+
+function addToCart(id, byVoice=false){
+  const item = MENU.find(i=>i.id===id); if(!item) return;
+  const ex = cart.find(c=>c.id===id);
+  if(ex) ex.qty++; else cart.push({...item,qty:1});
+  refreshCart();
+  flashCard(id);
+  showToast(`${item.name} added 🎉`,'ok');
+  if(byVoice) speak(`${item.name} added to your cart`);
+}
+
+function chQty(id,d){
+  const ex=cart.find(c=>c.id===id); if(!ex) return;
+  ex.qty+=d; if(ex.qty<=0) cart=cart.filter(c=>c.id!==id);
+  refreshCart();
+}
+
+function refreshCart(){
+  const sub  = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const tax  = Math.round(sub*.05);
+  const grand= sub+29+tax;
+  const cnt  = cart.reduce((s,i)=>s+i.qty,0);
+
+  document.getElementById('cartCount').textContent = cnt;
+  document.getElementById('tSub').textContent  = '₹'+sub;
+  document.getElementById('tTax').textContent  = '₹'+tax;
+  document.getElementById('tGrand').textContent= '₹'+grand;
+  document.getElementById('cartFoot').classList.toggle('hidden',!cart.length);
+  updateAddressUI();
+
+  const el = document.getElementById('cartList');
+  if(!cart.length){
+    el.innerHTML=`<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p>Cart is empty.<br>Say a dish name!</p></div>`;
+  } else {
+    el.innerHTML = cart.map(i=>`
+      <div class="c-item">
+        <img class="c-thumb" src="${i.img}" alt="${i.name}"
+          onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2244%22 height=%2244%22><rect width=%2244%22 height=%2244%22 fill=%22%231c1c1c%22/><text x=%2222%22 y=%2228%22 text-anchor=%22middle%22 font-size=%2218%22>🍽</text></svg>'"/>
+        <div class="c-info">
+          <div class="c-name">${i.name}</div>
+          <div class="c-price">₹${i.price} × ${i.qty} = ₹${i.price*i.qty}</div>
+        </div>
+        <div class="qty">
+          <button class="q-btn" onclick="chQty(${i.id},-1)">−</button>
+          <span class="q-num">${i.qty}</span>
+          <button class="q-btn" onclick="chQty(${i.id},1)">+</button>
+        </div>
+      </div>`).join('');
+  }
+}
+
+function flashCard(id){
+  const el=document.querySelector(`[data-id="${id}"]`); if(!el) return;
+  el.classList.add('pop');
+  setTimeout(()=>el.classList.remove('pop'),400);
+}
+
+function openCart(){
+  document.getElementById('cartPanel').classList.add('on');
+  document.getElementById('cartMask').classList.add('on');
+}
+function closeCart(){
+  document.getElementById('cartPanel').classList.remove('on');
+  document.getElementById('cartMask').classList.remove('on');
+}
+
+function updateAddressUI(){
+  document.getElementById('addressLine').textContent = selectedAddress ? `Deliver to: ${selectedAddress}` : 'Use voice: "deliver to 123 Main Street"';
+  document.getElementById('addressPanel').classList.toggle('hidden', !cart.length);
+}
+
+function selectAddress(addr){
+  selectedAddress = addr;
+  showToast(`Delivery address set to ${addr}`,'ok');
+  setStatus(`Delivery address: ${addr}`,'ok');
+  speak(`Delivery address set to ${addr}`);
+  updateAddressUI();
+}
+
+function setCustomAddress(addr){
+  if(!addr) return;
+  selectedAddress = addr;
+  showToast(`Delivery address set to ${addr}`,'ok');
+  setStatus(`Delivery address: ${addr}`,'ok');
+  speak(`Delivery address set to ${addr}`);
+  updateAddressUI();
+}
+
+function placeOrderCOD(){
+  if(!cart.length){setStatus('Add items first!','err');speak('Please add items to cart first');return;}
+  if(!selectedAddress){setStatus('Set delivery address first','err');speak('Please tell me your delivery address');return;}
+  closeCart();
+  document.getElementById('upiView').classList.add('hidden');
+  document.getElementById('processingView').classList.remove('hidden');
+  document.getElementById('successView').classList.add('hidden');
+  document.getElementById('payBg').classList.add('on');
+  setStatus('Placing order with cash on delivery…','on');
+  setTimeout(()=>{
+    document.getElementById('processingView').classList.add('hidden');
+    document.getElementById('successView').classList.remove('hidden');
+    const oid='AB'+Date.now().toString().slice(-6);
+    document.getElementById('orderId').textContent='Order #'+oid;
+    speak(`Order placed with cash on delivery to ${selectedAddress}. Estimated delivery in 25 to 35 minutes.`);
+    cart=[]; refreshCart();
+    setStatus('Order placed successfully!','ok');
+  },2200);
+}
+
+// ══════════════════════════════════════════
+//  MENU RENDER
+// ══════════════════════════════════════════
+let curFilter='all', glowIds=[];
+
+function renderFilters(){
+  const cats=['all',...new Set(MENU.map(i=>i.cat))];
+  document.getElementById('filterRow').innerHTML = cats.map(c=>
+    `<button class="flt ${c==='all'?'on':''}" onclick="setFilter('${c}',this)">${c==='all'?'🌿 All':cap(c)}</button>`
+  ).join('');
+}
+
+function setFilter(cat,el){
+  curFilter=cat;
+  document.querySelectorAll('.flt').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
+  renderMenu();
+}
+
+function renderMenu(){
+  const items = curFilter==='all' ? MENU : MENU.filter(i=>i.cat===curFilter);
+  document.getElementById('menuGrid').innerHTML = items.map(cardHTML).join('');
+}
+
+function renderHarisFavorites(){
+  const items = HARIS_PROFILE.previousOrders.map(o=>MENU.find(i=>i.id===o.id)).filter(Boolean);
+  document.getElementById('harisGrid').innerHTML = items.map(cardHTML).join('');
+}
+
+function cardHTML(item){
+  const g = glowIds.includes(item.id)?'glow':'';
+  return `
+  <div class="food-card ${g}" data-id="${item.id}" onclick="addToCart(${item.id})">
+    <div class="card-img">
+      <img src="${item.img}" alt="${item.name}" loading="lazy"
+        onerror="this.parentElement.innerHTML='<div style=\\'height:140px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:var(--surf2)\\'>🍽️</div>'"/>
+      <div class="veg-dot"></div>
+      <div class="cat-tag">${item.cat}</div>
+      <div class="img-overlay"><span class="say-hint">🎙 Say "${item.name.split(' ')[0]}"</span></div>
+    </div>
+    <div class="card-body">
+      <div class="card-name">${item.name}</div>
+      <div class="card-desc">${item.desc}</div>
+      <div class="card-foot">
+        <span class="card-price">₹${item.price}</span>
+        <button class="add-btn" onclick="event.stopPropagation();addToCart(${item.id})">+ Add</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function showRecs(ids, intent){
+  const sec=document.getElementById('recSec');
+  const recs=ids.map(id=>MENU.find(i=>i.id===id)).filter(Boolean);
+  if(!recs.length){sec.classList.add('hidden');return;}
+  sec.classList.remove('hidden');
+  document.getElementById('intentBadge').textContent='🎙 '+intent;
+  document.getElementById('recGrid').innerHTML=recs.map(cardHTML).join('');
+  glowIds=ids; renderMenu();
+  sec.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+// ══════════════════════════════════════════
+//  VOICE ENGINE — fixed & robust
+// ══════════════════════════════════════════
+let SR=null, recognizing=false, lastRecs=[], alwaysListening=true;
+
+function initSR(){
+  const API = window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!API){
+    showVoiceFix('SpeechRecognition is not available. Use Google Chrome or Microsoft Edge browser.');
+    return null;
+  }
+  const r=new API();
+  r.lang='en-IN'; r.continuous=true; r.interimResults=true; r.maxAlternatives=3;
+
+  r.onstart=()=>{
+    recognizing=true;
+    document.getElementById('micMain').classList.add('on');
+    document.getElementById('micHdr').classList.add('on');
+    document.getElementById('voiceFix').classList.remove('show');
+    setStatus('Listening… speak now 🎙️','on');
+  };
+
+  r.onresult=e=>{
+    let t='';
+    for(let i=e.resultIndex;i<e.results.length;i++) t=e.results[i][0].transcript;
+    showTranscript(t);
+    if(e.results[e.results.length-1].isFinal){
+      processCmd(t.trim().toLowerCase());
+      if(alwaysListening){
+        setTimeout(()=>{ if(alwaysListening) startMic(); }, 500);
+      }
+    }
+  };
+
+  r.onerror=e=>{
+    const msgs={
+      'not-allowed':'Microphone permission denied. Click the 🔒 icon in your browser address bar and allow microphone access.',
+      'network':'Network error. Make sure you\'re on http://localhost (run python -m http.server 8000)',
+      'no-speech':'No speech detected. Please speak clearly and try again.',
+      'aborted':'Stopped listening.',
+      'audio-capture':'No microphone found. Please connect a microphone.',
+      'service-not-allowed':'Voice requires HTTPS or localhost. Run via: python -m http.server 8000'
+    };
+    const msg = msgs[e.error]||`Error: ${e.error}`;
+    setStatus(msg,'err');
+    if(e.error==='not-allowed'||e.error==='service-not-allowed'||e.error==='network'){
+      showVoiceFix(msg);
+    }
+    if(alwaysListening && e.error!=='not-allowed'){
+      setTimeout(()=>{ if(alwaysListening) startMic(); }, 1000);
+    }
+  };
+
+  r.onend=()=>{
+    if(alwaysListening){
+      setTimeout(()=>{ if(alwaysListening) startMic(); }, 250);
+    } else {
+      stopMic();
+    }
+  };
+  return r;
+}
+
+function showVoiceFix(extra){
+  const el=document.getElementById('voiceFix');
+  el.classList.add('show');
+}
+
+function toggleMic(){
+  if(alwaysListening) {
+    startMic();
+    return;
+  }
+  if(recognizing) stopMic();
+  else startMic();
+}
+
+function startMic(){
+  if(!SR) SR=initSR();
+  if(!SR || recognizing) return;
+  try{
+    SR.start();
+    document.getElementById('micMain').classList.add('on');
+    document.getElementById('micHdr').classList.add('on');
+    setStatus('Listening… speak now 🎙️','on');
+    document.getElementById('transcript').classList.remove('show');
+  } catch(e){
+    if(e.name==='InvalidStateError'){
+      try{ SR.stop(); }catch(e2){}
+      setTimeout(startMic,300);
+    }
+  }
+}
+
+function stopMic(){
+  recognizing=false;
+  document.getElementById('micMain').classList.remove('on');
+  document.getElementById('micHdr').classList.remove('on');
+  try{ SR&&SR.stop(); }catch(e){}
+}
+
+function showTranscript(t){
+  const el=document.getElementById('transcript');
+  el.textContent='🗣 "'+t+'"';
+  el.classList.add('show');
+}
+
+function setStatus(msg,type=''){
+  document.getElementById('statusTxt').textContent=msg;
+  document.getElementById('statusPill').className='status-pill '+type;
+}
+
+function sim(text){
+  showTranscript(text);
+  setStatus('Processing…','on');
+  setTimeout(()=>processCmd(text.toLowerCase()),300);
+}
+
+// ══════════════════════════════════════════
+//  COMMAND PROCESSING
+// ══════════════════════════════════════════
+function processCmd(cmd){
+  // ── Navigation commands ──
+  if(/open cart|my cart|view cart/.test(cmd)){
+    openCart(); setStatus('Cart opened ✓','ok'); speak('Your cart is open'); return;
+  }
+  if(/deliver to|ship to|send to|address is|address:|deliver at/.test(cmd)){
+    const m = cmd.match(/(?:deliver to|ship to|send to|address is|address:|deliver at)\s+(.+)/);
+    if(m && m[1]){ setCustomAddress(m[1].trim()); return; }
+  }
+  if(/use (home|office|work)|home address|office address|work address/.test(cmd)){
+    const match = cmd.match(/use (home|office|work)|home address|office address|work address/);
+    const addr = match?.[1] || (cmd.includes('home address')?'Home':cmd.includes('office address')?'Office':cmd.includes('work address')?'Office':'Home');
+    selectAddress(addr);
+    return;
+  }
+  if(/cash on delivery|cod|pay cash|cash payment|pay on delivery/.test(cmd)){
+    placeOrderCOD(); return;
+  }
+  if(/place order|order now|confirm order|confirm purchase|finalize order/.test(cmd)){
+    if(!cart.length){setStatus('Add items first!','err');speak('Please add items to cart first');return;}
+    if(/cash on delivery|cod|pay cash|cash payment|pay on delivery/.test(cmd)){
+      placeOrderCOD(); return;
+    }
+    openUPI(); setStatus('Opening UPI payment ✓','ok'); return;
+  }
+  if(/checkout|pay|upi/.test(cmd)){
+    if(!cart.length){setStatus('Add items first!','err');speak('Please add items to cart first');return;}
+    openUPI(); setStatus('Opening UPI payment ✓','ok'); return;
+  }
+  if(/clear cart|empty cart|remove all/.test(cmd)){
+    cart=[]; refreshCart(); setStatus('Cart cleared ✓','ok'); speak('Cart cleared'); return;
+  }
+
+  // ── Add by position from last recs ──
+  if(/(add|get|take).*(first|1st|number one|top)/.test(cmd)&&lastRecs[0]){
+    addToCart(lastRecs[0].id,true); setStatus(`${lastRecs[0].name} added ✓`,'ok'); return;
+  }
+  if(/(add|get|take).*(second|2nd)/.test(cmd)&&lastRecs[1]){
+    addToCart(lastRecs[1].id,true); setStatus(`${lastRecs[1].name} added ✓`,'ok'); return;
+  }
+  if(/(add|get|take).*(third|3rd)/.test(cmd)&&lastRecs[2]){
+    addToCart(lastRecs[2].id,true); setStatus(`${lastRecs[2].name} added ✓`,'ok'); return;
+  }
+
+  // ── Direct dish name match ──
+  const direct = matchDish(cmd);
+  const hasOrderWord = /order|add|give me|i want|i need|get me|bring|want/.test(cmd);
+
+  if(direct && hasOrderWord){
+    addToCart(direct.id,true);
+    setStatus(`${direct.name} added to cart ✓`,'ok');
+    askAI(cmd, direct.id);  // show AI recs alongside
+    return;
+  }
+
+  // ── Category triggers ──
+  const catMap={
+    'south indian':['dosa','idli','uttapam','south indian'],
+    'north indian':['paneer','dal','chole','korma','kofta','butter masala','north indian','curry'],
+    'rice':['biryani','rice','rajma'],
+    'snacks':['samosa','tikka','snack','starter','pav','nachos','cutlet','vada','puri','bhel'],
+    'desserts':['sweet','dessert','gulab','jamun','halwa','rasmalai','brownie'],
+    'breads':['naan','bread','paratha','kulcha'],
+    'beverages':['chai','lassi','soda','drink','beverage']
+  };
+
+  for(const [cat,words] of Object.entries(catMap)){
+    if(words.some(w=>cmd.includes(w))){
+      const items=MENU.filter(i=>i.cat===cat);
+      lastRecs=items;
+      showRecs(items.map(i=>i.id), cap(cat)+' items');
+      setStatus(`Showing ${cat} items ✓`,'ok');
+      speak(`Here are the ${cat} options`);
+      return;
+    }
+  }
+
+  // ── Fallback to AI ──
+  setStatus('Finding best picks for you…','on');
+  askAI(cmd, direct?.id||null);
+}
+
+function matchDish(cmd){
+  // Full name match
+  let m = MENU.find(i=>cmd.includes(i.name.toLowerCase()));
+  if(m) return m;
+  // First word match (>3 chars)
+  return MENU.find(i=>i.name.toLowerCase().split(' ').some(w=>w.length>3&&cmd.includes(w)))||null;
+}
+
+// ══════════════════════════════════════════
+//  AI via Anthropic API
+// ══════════════════════════════════════════
+function askAI(userText, directId){
+  const prompt=`You are AutoBite, a voice-first Indian veg food ordering AI.
+User said: "${userText}"
+Menu: ${JSON.stringify(MENU.map(i=>({id:i.id,name:i.name,cat:i.cat,price:i.price,tags:i.tags})))}
+Reply ONLY with valid JSON (no markdown, no extra text):
+{"intent":"<4-word label>","reply":"<one friendly spoken sentence>","ids":[<4 menu item IDs best matching user's request>]}`;
+
+  fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:250,messages:[{role:'user',content:prompt}]})
+  })
+  .then(r=>r.json())
+  .then(data=>{
+    let p={};
+    try{p=JSON.parse((data.content?.[0]?.text||'{}').replace(/```json|```/g,''));}catch(e){}
+    const ids=Array.isArray(p.ids)?p.ids:[];
+    if(directId&&!ids.includes(directId)) ids.unshift(directId);
+    lastRecs=ids.map(id=>MENU.find(i=>i.id===id)).filter(Boolean);
+    showRecs(ids,p.intent||'Your picks');
+    const reply=p.reply||'Here are my picks for you!';
+    setStatus(reply,'ok');
+    speak(reply);
+  })
+  .catch(()=>{
+    // Fallback
+    const recs = directId ? [MENU.find(i=>i.id===directId),...MENU.filter(i=>i.id!==directId).slice(0,3)] : MENU.slice(0,4);
+    lastRecs=recs.filter(Boolean);
+    showRecs(lastRecs.map(i=>i.id),'Top Picks');
+    setStatus('Here are some great picks ✓','ok');
+  });
+}
+
+// ══════════════════════════════════════════
+//  TEXT TO SPEECH
+// ══════════════════════════════════════════
+function speak(text){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-IN'; u.rate=.92; u.pitch=1.05;
+  // Prefer a female Indian voice if available
+  const voices=window.speechSynthesis.getVoices();
+  const pref=voices.find(v=>v.lang==='en-IN')||voices.find(v=>v.lang.startsWith('en'));
+  if(pref) u.voice=pref;
+  window.speechSynthesis.speak(u);
+}
+
+// ══════════════════════════════════════════
+//  UPI PAYMENT
+// ══════════════════════════════════════════
+function openUPI(){
+  if(!cart.length) return;
+  const sub=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const grand=sub+29+Math.round(sub*.05);
+  document.getElementById('upiAmt').textContent='₹'+grand;
+  drawQR(grand);
+  ['upiView','processingView','successView'].forEach(id=>{
+    document.getElementById(id).classList.toggle('hidden',id!=='upiView');
+  });
+  document.getElementById('upiInput').value='';
+  document.querySelectorAll('.upi-app').forEach(a=>a.classList.remove('on'));
+  document.getElementById('payBg').classList.add('on');
+  closeCart();
+}
+
+function closeUPI(){
+  document.getElementById('payBg').classList.remove('on');
+}
+
+function drawQR(amount){
+  const c=document.getElementById('qrCanvas');
+  const ctx=c.getContext('2d');
+  const S=155;
+  ctx.fillStyle='#fff'; ctx.fillRect(0,0,S,S);
+  ctx.fillStyle='#111';
+  const N=13, cs=Math.floor((S-20)/N), pad=10;
+  // Data pattern
+  const seed=amount%97;
+  for(let r=0;r<N;r++) for(let col=0;col<N;col++){
+    if((r<4&&col<4)||(r<4&&col>N-5)||(r>N-5&&col<4)) continue; // corners reserved
+    if((r*col+r+col+seed)%3===0){
+      ctx.fillRect(pad+col*cs, pad+r*cs, cs-1, cs-1);
+    }
+  }
+  // Corner squares
+  [[pad,pad],[pad+cs*(N-4-1+1),pad],[pad,pad+cs*(N-4-1+1)]].forEach(([x,y])=>{
+    ctx.fillStyle='#111'; ctx.fillRect(x,y,cs*4,cs*4);
+    ctx.fillStyle='#fff'; ctx.fillRect(x+cs,y+cs,cs*2.2,cs*2.2);
+    ctx.fillStyle='#111'; ctx.fillRect(x+cs*1.4,y+cs*1.4,cs*1.2,cs*1.2);
+  });
+  // Branding
+  ctx.fillStyle='#ff5722'; ctx.font='bold 8px Arial'; ctx.textAlign='center';
+  ctx.fillText('AutoBite',S/2,S-4);
+}
+
+function launchApp(el,app){
+  document.querySelectorAll('.upi-app').forEach(a=>a.classList.remove('on'));
+  el.classList.add('on');
+  const amt=document.getElementById('upiAmt').textContent.replace('₹','');
+  const links={
+    gpay:`tez://upi/pay?pa=autobite@okicici&pn=AutoBite&am=${amt}&cu=INR`,
+    phonepe:`phonepe://pay?pa=autobite@ybl&pn=AutoBite&am=${amt}&cu=INR`,
+    paytm:`paytmmp://pay?pa=autobite@paytm&pn=AutoBite&am=${amt}&cu=INR`,
+    bhim:`upi://pay?pa=autobite@upi&pn=AutoBite&am=${amt}&cu=INR`,
+  };
+  showToast(`Opening ${app.toUpperCase()}…`,'info');
+  window.location.href=links[app];
+}
+
+function doPay(){
+  const uid=document.getElementById('upiInput').value.trim();
+  const hasApp=document.querySelector('.upi-app.on');
+  if(!uid&&!hasApp){ showToast('Enter UPI ID or tap an app above','err'); return; }
+  document.getElementById('upiView').classList.add('hidden');
+  document.getElementById('processingView').classList.remove('hidden');
+  setTimeout(()=>{
+    document.getElementById('processingView').classList.add('hidden');
+    document.getElementById('successView').classList.remove('hidden');
+    const oid='AB'+Date.now().toString().slice(-6);
+    document.getElementById('orderId').textContent='Order #'+oid;
+    speak('Payment successful! Your order has been placed. Expected delivery in 25 to 35 minutes. Enjoy your meal!');
+  },2200);
+}
+
+function resetAll(){
+  closeUPI();
+  cart=[]; refreshCart();
+  document.getElementById('recSec').classList.add('hidden');
+  glowIds=[]; lastRecs=[];
+  renderMenu();
+  setStatus('Tap mic and say a dish name','');
+  document.getElementById('transcript').classList.remove('show');
+  showToast('Order placed! Order again anytime 😊','ok');
+}
+
+// ══════════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════════
+let toastT;
+function showToast(msg,type='info'){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.className='toast on '+type;
+  clearTimeout(toastT);
+  toastT=setTimeout(()=>el.className='toast',2700);
+}
+
+// ══════════════════════════════════════════
+//  KEYBOARD: Space = mic toggle
+// ══════════════════════════════════════════
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'&&e.target.tagName!=='INPUT'&&e.target.tagName!=='TEXTAREA'){
+    e.preventDefault(); toggleMic();
+  }
+});
+
+// Load voices (async on some browsers)
+if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged=()=>window.speechSynthesis.getVoices();
+
+// ══════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════
+renderFilters();
+renderMenu();
+renderHarisFavorites();
+refreshCart();
+setStatus(`Hi ${HARIS_PROFILE.name}! Tap mic and say a dish name`, '');
+startMic();
+</script>
+</body>
+</html>

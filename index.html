@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoBite - AI Food Recommender</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="text-dislikes"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="text-dislikes"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .button:active {
+            transform: translateY(0);
+        }
+        
+        .loading {
+            text-align: center;
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .results {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .intent-box {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .intent-label {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        .intent-text {
+            color: #333;
+            font-size: 1.3em;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        .recommendations-title {
+            color: #333;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .recommendation-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .food-name {
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .food-category {
+            color: #667eea;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .food-details {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .error {
+            background: #ffe0e0;
+            color: #cc0000;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #cc0000;
+            margin-top: 20px;
+        }
+        
+        .hint {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.95em;
+        }
+
+        /* Voice input wrapper: input + mic button */
+        .input-with-voice {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+        .input-with-voice input {
+            flex: 1;
+        }
+        .voice-btn {
+            flex-shrink: 0;
+            width: 48px;
+            min-width: 48px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .voice-btn:hover {
+            background: #e8ecff;
+            border-color: #667eea;
+        }
+        .voice-btn.listening {
+            background: #ffe0e0;
+            border-color: #e53935;
+            animation: pulse-mic 1s ease-in-out infinite;
+        }
+        @keyframes pulse-mic {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(229, 57, 53, 0); }
+        }
+        .voice-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: #667eea;
+        }
+        .voice-btn.listening svg {
+            fill: #e53935;
+        }
+        .voice-status {
+            font-size: 0.85em;
+            color: #667eea;
+            margin-top: 4px;
+            min-height: 1.2em;
+        }
+        .read-aloud-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .read-aloud-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        .read-aloud-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Single voice assistant button */
+        .voice-assistant-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%);
+            border-radius: 12px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+        }
+        .voice-assistant-wrap p {
+            flex: 1;
+            margin: 0;
+            color: #444;
+            font-size: 0.95em;
+        }
+        .voice-assistant-btn {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .voice-assistant-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        .voice-assistant-btn.listening {
+            background: #e53935;
+            animation: pulse-mic 1s ease-in-out infinite;
+        }
+        .voice-assistant-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+        .voice-assistant-status {
+            font-size: 0.9em;
+            color: #667eea;
+            margin-top: 8px;
+            min-height: 1.4em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍽️ AutoBite</h1>
+        <p class="subtitle">AI-Powered Food Recommendations</p>
+        
+        <form id="predictionForm">
+            <div class="voice-assistant-wrap">
+                <p><strong>🎤 Say it in one go:</strong> e.g. "I want something spicy and healthy, avoid dairy, user 5"</p>
+                <button type="button" class="voice-assistant-btn" id="voiceAssistantBtn" title="Fill all fields with your voice">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.35s5.42-2.35 5.91-5.35c.1-.6-.39-1.14-1-1.14z"/></svg>
+                </button>
+            </div>
+            <div class="voice-assistant-status" id="voiceAssistantStatus" aria-live="polite"></div>
+
+            <div class="form-group">
+                <label for="userText">What are you in the mood for?</label>
+                <input 
+                    type="text" 
+                    id="userText" 
+                    placeholder="e.g., 'I want something spicy and healthy'" 
+                    required
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="userId">User ID (1-1000)</label>
+                <input 
+                    type="number" 
+                    id="userId" 
+                    value="1" 
+                    min="1" 
+                    max="1000"
+                    required
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="dislikes">Foods to Avoid (comma-separated, optional)</label>
+                <input 
+                    type="text" 
+                    id="dislikes" 
+                    placeholder="e.g., 'sweet, spicy, dairy'"
+                >
+            </div>
+            
+            <button type="submit" class="button">Get Recommendations</button>
+        </form>
+        
+        <div id="loading" class="loading" style="display: none;">
+            <span class="spinner"></span>Getting recommendations...
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        // —— Single voice assistant: one mic, fills all fields from one utterance ——
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition = null;
+
+        /**
+         * Parse one voice utterance into mood, user ID, and dislikes.
+         * Example: "I want something spicy, avoid dairy, user 5" -> { mood, userId: 5, dislikes: ["dairy"] }
+         */
+        function parseVoiceInput(transcript) {
+            let text = (transcript || '').trim();
+            const lower = text.toLowerCase();
+            let userId = 1;
+            let dislikes = [];
+
+            // Extract user ID: "user 5", "user id 10", "for user 42"
+            const userMatch = lower.match(/\buser\s*(?:id)?\s*(\d{1,4})\b/);
+            if (userMatch) {
+                userId = Math.max(1, Math.min(1000, parseInt(userMatch[1], 10)));
+                text = text.replace(/\buser\s*(?:id)?\s*\d{1,4}\b/gi, ' ').replace(/\s+/g, ' ').trim();
+            }
+
+            // Extract dislikes: "avoid X and Y", "no X", "without X"
+            const avoidKeywords = ['avoid', 'no', 'without', "don't want", "dont want", 'excluding'];
+            for (const kw of avoidKeywords) {
+                const idx = lower.indexOf(kw);
+                if (idx === -1) continue;
+                let end = text.length;
+                const afterKw = lower.slice(idx + kw.length).trim();
+                const userIdx = afterKw.indexOf('user ');
+                const commaIdx = afterKw.indexOf(',');
+                if (userIdx !== -1) end = idx + kw.length + userIdx;
+                else if (commaIdx !== -1 && (userIdx === -1 || commaIdx < userIdx)) end = idx + kw.length + commaIdx;
+                let avoidPhrase = text.slice(idx + kw.length, end).trim();
+                avoidPhrase = avoidPhrase.replace(/\buser\s*(?:id)?\s*\d.*$/i, '').trim();
+                if (avoidPhrase) {
+                    dislikes = avoidPhrase.split(/\s*(?:,| and | or )\s*/).map(s => s.trim()).filter(Boolean);
+                    text = (text.slice(0, idx) + ' ' + text.slice(end)).replace(/\s+/g, ' ').trim();
+                }
+                break;
+            }
+
+            // Mood = remaining text
+            let mood = text.replace(/\buser\s*(?:id)?\s*\d*\b/gi, '').replace(/\s+/g, ' ').trim();
+            if (!mood) mood = transcript.trim();
+
+            return { mood, userId, dislikes: dislikes.join(', ') };
+        }
+
+        function setListening(btn, isListening) {
+            if (btn) btn.classList.toggle('listening', isListening);
+        }
+
+        function startVoiceAssistant() {
+            const statusEl = document.getElementById('voiceAssistantStatus');
+            const btn = document.getElementById('voiceAssistantBtn');
+            const userTextEl = document.getElementById('userText');
+            const userIdEl = document.getElementById('userId');
+            const dislikesEl = document.getElementById('dislikes');
+
+            if (!SpeechRecognition) {
+                if (statusEl) statusEl.textContent = 'Voice not supported in this browser. Try Chrome or Edge.';
+                return;
+            }
+
+            if (!recognition) recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            statusEl.textContent = 'Listening… say your mood, what to avoid, and user number.';
+            setListening(btn, true);
+
+            recognition.onresult = function(event) {
+                const transcript = (event.results[0][0].transcript || '').trim();
+                const parsed = parseVoiceInput(transcript);
+                userTextEl.value = parsed.mood;
+                userIdEl.value = String(parsed.userId);
+                dislikesEl.value = parsed.dislikes;
+                statusEl.textContent = 'Filled from: "' + transcript.slice(0, 60) + (transcript.length > 60 ? '…' : '') + '"';
+                setListening(btn, false);
+            };
+
+            recognition.onerror = function(event) {
+                statusEl.textContent = event.error === 'no-speech' ? 'No speech detected. Try again.' : 'Error: ' + (event.error || 'Unknown');
+                setListening(btn, false);
+            };
+
+            recognition.onend = function() {
+                setListening(btn, false);
+            };
+
+            recognition.start();
+        }
+
+        document.getElementById('voiceAssistantBtn').addEventListener('click', startVoiceAssistant);
+
+        function speakRecommendations(data) {
+            if (!window.speechSynthesis) return;
+            const u = new SpeechSynthesisUtterance();
+            u.lang = 'en-US';
+            u.rate = 0.95;
+            u.pitch = 1;
+            let text = 'Your intent is: ' + (data.intent || '') + '. ';
+            if (data.recommendations && data.recommendations.length > 0) {
+                text += 'Top recommendations: ';
+                data.recommendations.forEach((rec, i) => {
+                    const name = rec.food_item || rec.name || 'item';
+                    const price = typeof rec.price === 'number' ? rec.price.toFixed(2) : rec.price;
+                    text += (i + 1) + ': ' + name + ', at ' + price + ' dollars. ';
+                });
+                text += 'Best choice: ' + (data.recommendations[0].food_item || data.recommendations[0].name) + '.';
+            } else {
+                text += 'No recommendations found. Try different filters.';
+            }
+            u.text = text;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(u);
+        }
+
+        document.getElementById('predictionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const userText = document.getElementById('userText').value;
+            const userId = parseInt(document.getElementById('userId').value);
+            const dislikes = document.getElementById('dislikes').value
+                .split(',')
+                .map(d => d.trim())
+                .filter(d => d.length > 0);
+            
+            const resultsDiv = document.getElementById('results');
+            const loadingDiv = document.getElementById('loading');
+            
+            resultsDiv.innerHTML = '';
+            loadingDiv.style.display = 'block';
+            
+            try {
+                const response = await fetch('http://localhost:8000/predict_text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: userText,
+                        user_id: userId,
+                        dislikes: dislikes
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                loadingDiv.style.display = 'none';
+                
+                if (data.error) {
+                    resultsDiv.innerHTML = `<div class="error">❌ ${data.error}</div>`;
+                } else {
+                    let html = '<div class="results">';
+                    html += `<div class="intent-box">
+                        <div class="intent-label">Detected Intent</div>
+                        <div class="intent-text">${data.intent}</div>
+                    </div>`;
+                    
+                    html += '<div class="recommendations-title">🎯 Top Recommendations</div>';
+                    
+                    if (data.recommendations && data.recommendations.length > 0) {
+                        data.recommendations.forEach(rec => {
+                            const price = typeof rec.price === 'number' 
+                                ? `$${rec.price.toFixed(2)}` 
+                                : rec.price;
+                            const score = typeof rec.preference_score === 'number'
+                                ? `${(rec.preference_score * 100).toFixed(0)}%`
+                                : rec.preference_score;
+                            
+                            html += `
+                                <div class="recommendation-item">
+                                    <div class="food-name">🍴 ${rec.food_item}</div>
+                                    <div class="food-category">📂 ${rec.category}</div>
+                                    <div class="food-details">
+                                        <span>💰 ${price}</span>
+                                        <span>⭐ ${score}</span>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        html += '<p style="color: #999;">No recommendations found. Try different filters.</p>';
+                    }
+                    
+                    html += '</div>';
+                    html += '<button type="button" class="read-aloud-btn" id="readAloudBtn" title="Hear recommendations">🔊 Read recommendations aloud</button>';
+                    html += '<div class="hint">💡 Try changing user ID or dislikes to get different recommendations!</div>';
+                    
+                    resultsDiv.innerHTML = html;
+                    window.__lastRecommendations = data;
+                    document.getElementById('readAloudBtn').addEventListener('click', () => speakRecommendations(window.__lastRecommendations));
+                }
+            } catch (error) {
+                loadingDiv.style.display = 'none';
+                resultsDiv.innerHTML = `<div class="error">❌ Error: ${error.message}<br>Make sure the server is running at http://localhost:8000</div>`;
+            }
+        });
+    </script>
+</body>
+</html>
